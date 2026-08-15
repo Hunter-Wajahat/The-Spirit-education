@@ -1,0 +1,128 @@
+.courseNav {
+  width: 100%;
+
+  background: #ffffff;
+
+  border-bottom: 1px solid #e5ebe6;
+  padding-top: 5%;
+}
+
+
+.courseNavContainer {
+  max-width: 1250px;
+
+  min-height: 72px;
+
+  margin: 0 auto;
+  padding: 0 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+}
+
+
+/* =========================
+   Course Navigation Item
+========================= */
+
+.courseNavItem {
+  position: relative;
+
+  padding: 14px 22px;
+
+  color: #536158;
+
+  text-decoration: none;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  white-space: nowrap;
+
+  transition: color 0.25s ease;
+}
+
+
+/* Gold underline */
+
+.courseNavItem::after {
+  content: "";
+
+  position: absolute;
+
+  left: 22px;
+  right: 22px;
+  bottom: 0;
+
+  height: 2px;
+
+  background: #ea8f24;
+
+  transform: scaleX(0);
+
+  transform-origin: center;
+
+  transition: transform 0.25s ease;
+}
+
+
+.courseNavItem:hover {
+  color: #2d7d42;
+}
+
+
+.courseNavItem:hover::after {
+  transform: scaleX(1);
+}
+
+
+/* =========================
+   Active Item
+========================= */
+
+.courseNavItem.active {
+  color: #2d7d42;
+}
+
+
+.courseNavItem.active::after {
+  transform: scaleX(1);
+}
+
+
+/* =========================
+   Tablet
+========================= */
+
+@media (max-width: 800px) {
+
+  .courseNavContainer {
+    justify-content: flex-start;
+
+    overflow-x: auto;
+
+    padding: 0 20px;
+
+    gap: 0;
+
+    scrollbar-width: none;
+  }
+
+  .courseNavContainer::-webkit-scrollbar {
+    display: none;
+  }
+
+  .courseNavItem {
+    padding: 14px 17px;
+
+    font-size: 12px;
+  }
+
+  .courseNavItem::after {
+    left: 17px;
+    right: 17px;
+  }
+}
