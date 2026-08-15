@@ -1,0 +1,446 @@
+.hero {
+  min-height: calc(100vh - 82px);
+
+  padding: 80px 7%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 70px;
+
+  background: #fffdf8;
+
+  overflow: hidden;
+  border-bottom: 1px solid #1c3524;
+}
+
+
+/* =========================
+   Hero Content
+========================= */
+
+.heroContent {
+  max-width: 650px;
+}
+
+
+.heroTag {
+  display: inline-block;
+
+  margin-bottom: 18px;
+
+  color: #ea8f24;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+
+.heroContent h1 {
+  margin: 0;
+
+  color: #1c3524;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: clamp(45px, 5vw, 72px);
+  line-height: 1.08;
+  font-weight: 600;
+}
+
+
+.heroContent h1 span {
+  display: block;
+
+  color: #2d7d42;
+}
+
+
+.heroContent p {
+  max-width: 570px;
+
+  margin: 25px 0 32px;
+
+  color: #647067;
+
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+
+/* =========================
+   Buttons
+========================= */
+
+.heroButtons {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+
+.heroPrimaryBtn,
+.heroSecondaryBtn {
+  height: 50px;
+
+  padding: 0 23px;
+
+  border-radius: 6px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+}
+
+
+.heroPrimaryBtn {
+  border: 1px solid #2d7d42;
+
+  background: #2d7d42;
+  color: white;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+
+.heroPrimaryBtn span {
+  font-size: 19px;
+
+  transition: transform 0.25s ease;
+}
+
+
+.heroPrimaryBtn:hover {
+  background: #246936;
+
+  transform: translateY(-2px);
+
+  box-shadow: 0 8px 20px rgba(45, 125, 66, 0.18);
+}
+
+
+.heroPrimaryBtn:hover span {
+  transform: translateX(4px);
+}
+
+
+.heroSecondaryBtn {
+  border: 1px solid #d9dfda;
+
+  background: transparent;
+
+  color: #2d7d42;
+}
+
+
+.heroSecondaryBtn:hover {
+  border-color: #2d7d42;
+
+  background: #f3f8f4;
+}
+
+
+/* =========================
+   Stats
+========================= */
+
+.heroStats {
+  margin-top: 50px;
+
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+
+.heroStats div:not(.statDivider) {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+
+.heroStats strong {
+  color: #2d7d42;
+
+  font-size: 21px;
+  font-weight: 700;
+}
+
+
+.heroStats span {
+  color: #7a847d;
+
+  font-size: 12px;
+}
+
+
+.statDivider {
+  width: 1px;
+  height: 35px;
+
+  background: #dfe5df;
+}
+
+
+/* =========================
+   Visual
+========================= */
+
+.heroVisual {
+  position: relative;
+
+  width: 430px;
+  height: 430px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.heroCircle {
+  position: absolute;
+
+  width: 390px;
+  height: 390px;
+
+  border-radius: 50%;
+
+  background: #edf5ee;
+
+  border: 1px solid #dbe9dd;
+}
+
+
+/* Decorative gold circle */
+
+.heroCircle::before {
+  content: "";
+
+  position: absolute;
+
+  width: 75px;
+  height: 75px;
+
+  right: -10px;
+  top: 30px;
+
+  border-radius: 50%;
+
+  background: #ea8f24;
+
+  opacity: 0.9;
+}
+
+
+/* Quran Card */
+
+.quranCard {
+  position: relative;
+  z-index: 2;
+
+  width: 300px;
+  min-height: 320px;
+  /* padding: 40px 30px; */
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  background: #ffffff;
+
+  border: 1px solid #e4ebe5;
+
+  border-radius: 10px;
+
+  box-shadow:
+    0 25px 60px rgba(37, 77, 48, 0.1);
+    overflow: hidden;
+}
+
+
+.quranDecoration {
+  margin-bottom: 25px;
+
+  color: #ea8f24;
+
+  font-size: 28px;
+}
+
+
+.arabicText {
+  margin: 0;
+
+  color: #2d7d42;
+
+  font-family: "Times New Roman", serif;
+
+  font-size: 30px;
+  line-height: 1.8;
+
+  direction: rtl;
+}
+
+
+.ayahText {
+  margin-top: 18px;
+
+  color: #68736c;
+
+  font-family: Georgia, serif;
+
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+
+.ayahReference {
+  margin-top: 15px;
+
+  color: #ea8f24;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  letter-spacing: 0.8px;
+}
+
+
+/* =========================
+   Responsive
+========================= */
+
+@media (max-width: 1000px) {
+
+  .hero {
+    padding: 70px 5%;
+    gap: 30px;
+  }
+
+  .heroVisual {
+    width: 350px;
+    height: 350px;
+  }
+
+  .heroCircle {
+    width: 320px;
+    height: 320px;
+  }
+
+  .quranCard {
+    width: 260px;
+    min-height: 290px;
+  }
+
+  .arabicText {
+    font-size: 25px;
+  }
+}
+
+
+@media (max-width: 800px) {
+
+  .hero {
+    min-height: auto;
+
+    padding: 70px 25px;
+
+    flex-direction: column;
+
+    text-align: center;
+  }
+
+  .heroContent {
+    max-width: 650px;
+  }
+
+  .heroContent p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .heroButtons {
+    justify-content: center;
+  }
+
+  .heroStats {
+    justify-content: center;
+  }
+
+  .heroVisual {
+    margin-top: 20px;
+  }
+}
+
+
+@media (max-width: 500px) {
+
+  .hero {
+    padding: 55px 20px;
+  }
+
+  .heroContent h1 {
+    font-size: 42px;
+  }
+
+  .heroContent p {
+    font-size: 15px;
+  }
+
+  .heroButtons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .heroPrimaryBtn,
+  .heroSecondaryBtn {
+    width: 100%;
+  }
+
+  .heroStats {
+    gap: 13px;
+  }
+
+  .heroStats strong {
+    font-size: 17px;
+  }
+
+  .heroStats span {
+    font-size: 10px;
+  }
+
+  .heroVisual {
+    width: 310px;
+    height: 310px;
+  }
+
+  .heroCircle {
+    width: 285px;
+    height: 285px;
+  }
+
+  .quranCard {
+    width: 230px;
+    min-height: 260px;
+    padding: 25px;
+  }
+
+  .arabicText {
+    font-size: 22px;
+  }
+}

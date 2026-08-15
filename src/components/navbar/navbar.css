@@ -1,0 +1,175 @@
+.navbarContainer {
+  width: 100%;
+  /* max-width: 1400px; */
+  /* height: 82px; */
+
+  margin: 0 auto;
+  padding: 0 35px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: #ffffff;
+  position:fixed;
+  z-index: 999;
+}
+
+
+/* =========================
+   Logo
+========================= */
+
+.logoInNav {
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+
+  flex-shrink: 0;
+}
+
+.logoInNav img {
+  width: 80px;
+  height: auto;
+
+  display: block;
+  object-fit: contain;
+}
+
+
+/* =========================
+   Navigation
+========================= */
+
+.navbarContainer ul {
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+
+.navbarContainer li {
+  position: relative;
+
+  padding: 10px 13px;
+
+  color: #24382a;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  white-space: nowrap;
+
+  transition: color 0.25s ease;
+}
+
+
+/* Gold underline */
+
+.navbarContainer li::after {
+  content: "";
+
+  position: absolute;
+
+  left: 13px;
+  right: 13px;
+  bottom: 2px;
+
+  height: 2px;
+
+  background: #ea8f24;
+
+  transform: scaleX(0);
+  transform-origin: center;
+
+  transition: transform 0.25s ease;
+}
+
+
+.navbarContainer li:hover {
+  color: #2d7d42;
+}
+
+
+.navbarContainer li:hover::after {
+  transform: scaleX(1);
+}
+
+.signInBtn {
+  border: 1px solid #2d7d42;
+
+  padding: 10px 22px;
+
+  border-radius: 6px;
+
+  background: #2d7d42;
+  color: #ffffff;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+}
+
+.signInBtn:hover {
+  background: #ea8f24;
+  border-color: #ea8f24;
+
+  transform: translateY(-2px);
+}
+
+/* =========================
+   Responsive
+========================= */
+
+@media (max-width: 1100px) {
+
+  .navbarContainer {
+    padding: 0 22px;
+  }
+
+  .logoInNav img {
+    width: 130px;
+  }
+
+  .navbarContainer ul {
+    gap: 2px;
+  }
+
+  .navbarContainer li {
+    padding: 9px 8px;
+    font-size: 13px;
+  }
+
+  .navbarContainer li::after {
+    left: 8px;
+    right: 8px;
+  }
+}
+
+
+@media (max-width: 850px) {
+
+  .navbarContainer {
+    height: 72px;
+  }
+
+  .logoInNav img {
+    width: 120px;
+  }
+
+  .navbarContainer ul {
+    display: none;
+  }
+}
