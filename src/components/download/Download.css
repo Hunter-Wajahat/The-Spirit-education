@@ -1,0 +1,245 @@
+.downloadSection {
+  width: 100%;
+
+  padding: 90px 25px 110px;
+
+  background: #fffdf9;
+}
+
+
+.downloadContainer {
+  max-width: 1000px;
+
+  margin: 0 auto;
+}
+
+
+/* =========================
+   Header
+========================= */
+
+.downloadHeader {
+  margin-bottom: 60px;
+
+  text-align: center;
+}
+
+
+.downloadHeader > span {
+  color: #ea8f24;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  letter-spacing: 2px;
+
+  text-transform: uppercase;
+}
+
+
+.downloadHeader h1 {
+  margin: 14px 0 10px;
+
+  color: #203529;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: 48px;
+
+  font-weight: 600;
+}
+
+
+.downloadHeader h1 strong {
+  color: #2d7d42;
+
+  font-weight: 600;
+}
+
+
+.downloadHeader p {
+  margin: 0;
+
+  color: #737d76;
+
+  font-size: 14px;
+
+  line-height: 1.7;
+}
+
+
+/* =========================
+   Download Group
+========================= */
+
+.downloadGroup {
+  margin-bottom: 55px;
+}
+
+
+.downloadGroup:last-child {
+  margin-bottom: 0;
+}
+
+
+.downloadGroup h2 {
+  margin: 0 0 18px;
+
+  color: #2d7d42;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: 26px;
+
+  font-weight: 600;
+
+  border-bottom: 1px solid #e3e9e4;
+
+  padding-bottom: 12px;
+}
+
+
+/* =========================
+   List
+========================= */
+
+.downloadList {
+  display: flex;
+
+  flex-direction: column;
+}
+
+
+.downloadItem {
+  min-height: 70px;
+
+  padding: 10px 0;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+  border-bottom: 1px solid #edf0ed;
+}
+
+
+.downloadItem > div {
+  display: flex;
+
+  align-items: center;
+
+  gap: 18px;
+}
+
+
+.itemNumber {
+  color: #ea8f24;
+
+  font-family: Georgia, serif;
+
+  font-size: 13px;
+
+  min-width: 25px;
+}
+
+
+.downloadItem h3 {
+  margin: 0;
+
+  color: #34463a;
+
+  font-size: 14px;
+
+  font-weight: 500;
+}
+
+
+/* =========================
+   Download Button
+========================= */
+
+.downloadItem button {
+  flex-shrink: 0;
+
+  padding: 9px 16px;
+
+  border: 1px solid #2d7d42;
+
+  border-radius: 5px;
+
+  background: transparent;
+
+  color: #2d7d42;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+}
+
+
+.downloadItem button:hover {
+  background: #2d7d42;
+
+  color: #ffffff;
+
+  transform: translateY(-1px);
+}
+
+
+/* =========================
+   Mobile
+========================= */
+
+@media (max-width: 550px) {
+
+  .downloadSection {
+    padding: 70px 20px 90px;
+  }
+
+
+  .downloadHeader {
+    margin-bottom: 45px;
+  }
+
+
+  .downloadHeader h1 {
+    font-size: 38px;
+  }
+
+
+  .downloadItem {
+    min-height: 65px;
+
+    gap: 12px;
+  }
+
+
+  .downloadItem > div {
+    gap: 10px;
+  }
+
+
+  .downloadItem h3 {
+    font-size: 13px;
+  }
+
+
+  .downloadItem button {
+    padding: 8px 11px;
+
+    font-size: 10px;
+  }
+
+
+  .itemNumber {
+    display: none;
+  }
+}
