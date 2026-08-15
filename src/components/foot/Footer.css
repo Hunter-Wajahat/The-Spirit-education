@@ -1,0 +1,312 @@
+.footer {
+  width: 100%;
+
+  background: #203529;
+
+  color: #ffffff;
+}
+
+
+.footerContainer {
+  max-width: 1200px;
+
+  margin: 0 auto;
+
+  padding: 70px 30px 25px;
+}
+
+
+/* =========================
+   Top
+========================= */
+
+.footerTop {
+  display: grid;
+
+  grid-template-columns: 1.4fr 0.8fr 1.3fr;
+
+  gap: 70px;
+
+  padding-bottom: 55px;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+
+/* =========================
+   Brand
+========================= */
+
+.footerBrand img {
+  width: 150px;
+
+  max-height: 70px;
+
+  object-fit: contain;
+
+  object-position: left center;
+
+  margin-bottom: 20px;
+}
+
+
+.footerBrand p {
+  max-width: 330px;
+
+  margin: 0;
+
+  color: #b8c4bb;
+
+  font-size: 13px;
+
+  line-height: 1.8;
+}
+
+
+/* =========================
+   Footer Links
+========================= */
+
+.footerLinks h3,
+.footerSignup h3 {
+  margin: 0 0 20px;
+
+  color: #ffffff;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: 19px;
+
+  font-weight: 500;
+}
+
+
+.footerLinks ul {
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+
+  display: grid;
+
+  grid-template-columns: repeat(2, max-content);
+
+  gap: 11px 35px;
+}
+
+
+.footerLinks a {
+  color: #b8c4bb;
+
+  text-decoration: none;
+
+  font-size: 12px;
+
+  transition: color 0.2s ease;
+}
+
+
+.footerLinks a:hover {
+  color: #ea8f24;
+}
+
+
+/* =========================
+   Signup
+========================= */
+
+.footerSignup p {
+  max-width: 360px;
+
+  margin: 0 0 20px;
+
+  color: #b8c4bb;
+
+  font-size: 12px;
+
+  line-height: 1.7;
+}
+
+
+.signupForm {
+  max-width: 380px;
+
+  display: flex;
+
+  align-items: stretch;
+
+  border: 1px solid rgba(255, 255, 255, 0.18);
+
+  border-radius: 5px;
+
+  overflow: hidden;
+
+  background: rgba(255, 255, 255, 0.04);
+}
+
+
+.signupForm input {
+  width: 100%;
+
+  min-width: 0;
+
+  padding: 13px 15px;
+
+  border: none;
+
+  outline: none;
+
+  background: transparent;
+
+  color: #ffffff;
+
+  font-size: 12px;
+}
+
+
+.signupForm input::placeholder {
+  color: #8d9b91;
+}
+
+
+.signupForm button {
+  flex-shrink: 0;
+
+  padding: 0 18px;
+
+  border: none;
+
+  background: #ea8f24;
+
+  color: #ffffff;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: background 0.2s ease;
+}
+
+
+.signupForm button:hover {
+  background: #d77f18;
+}
+
+
+/* =========================
+   Bottom
+========================= */
+
+.footerBottom {
+  padding-top: 22px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 20px;
+}
+
+
+.footerBottom p {
+  margin: 0;
+
+  color: #89988e;
+
+  font-size: 11px;
+}
+
+
+.footerBottomLinks {
+  display: flex;
+
+  gap: 22px;
+}
+
+
+.footerBottomLinks a {
+  color: #89988e;
+
+  text-decoration: none;
+
+  font-size: 11px;
+
+  transition: color 0.2s ease;
+}
+
+
+.footerBottomLinks a:hover {
+  color: #ea8f24;
+}
+
+
+/* =========================
+   Tablet
+========================= */
+
+@media (max-width: 850px) {
+
+  .footerTop {
+    grid-template-columns: 1fr 1fr;
+
+    gap: 45px;
+  }
+
+  .footerSignup {
+    grid-column: 1 / -1;
+  }
+}
+
+
+/* =========================
+   Mobile
+========================= */
+
+@media (max-width: 550px) {
+
+  .footerContainer {
+    padding: 55px 20px 22px;
+  }
+
+  .footerTop {
+    grid-template-columns: 1fr;
+
+    gap: 40px;
+
+    padding-bottom: 40px;
+  }
+
+  .footerSignup {
+    grid-column: auto;
+  }
+
+  .footerLinks ul {
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 12px;
+  }
+
+  .signupForm {
+    max-width: 100%;
+  }
+
+  .signupForm button {
+    padding: 0 15px;
+  }
+
+  .footerBottom {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 15px;
+  }
+
+  .footerBottomLinks {
+    gap: 15px;
+  }
+}
