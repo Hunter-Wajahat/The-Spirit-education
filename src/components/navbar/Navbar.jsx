@@ -1,6 +1,7 @@
 import React from 'react'
 import logo from '../../assets/Spirit Logo.png'
 import './navbar.css'
+import { NavLink } from 'react-router-dom'
 
 const Navbar = () => {
     return (
@@ -9,14 +10,14 @@ const Navbar = () => {
                 <img src={logo} alt="Logo" />
             </h1>
             <ul>
-                <li>Home</li>
-                <li>About</li>
-                <li>Blog</li>
-                <li>Courses</li>
-                <li>Download</li>
-                <li>Library</li>
-                <li>Hadiyah/Fee</li>
-                <li>Platform</li>
+                <NavLink className={(e)=> {return e.isActive?"activeItem": ""}} to="/"><li>Home</li></NavLink>
+                <a className={(e)=> {return e.isActive?"activeItem": ""}} href="#about"><li>About</li></a>
+                <NavLink className={(e)=> {return e.isActive?"activeItem": ""}} to="/blog"><li>Blog</li></NavLink>
+                <NavLink className={(e)=> {return e.isActive?"activeItem": ""}} to="/courses"><li>Courses</li></NavLink>
+                <NavLink className={(e)=> {return e.isActive?"activeItem": ""}} to="/download"><li>Download</li></NavLink>
+                {/* <NavLink className={(e)=> {return e.isActive?"activeItem": ""}} to="/library"><li>Library</li></NavLink> */}
+                <NavLink className={(e)=> {return e.isActive?"activeItem": ""}} to="/hadiyah-fee"><li>Hadiyah/Fee</li></NavLink>
+                <NavLink className={(e)=> {return e.isActive?"activeItem": ""}} to="/platform"><li>Platform</li></NavLink>
             </ul>
             <button className="signInBtn">
     Sign In

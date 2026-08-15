@@ -13,8 +13,12 @@
   background: #ffffff;
   position:fixed;
   z-index: 999;
+  border-bottom: 1px solid #2d7d42;
 }
 
+.navbarContainer ul a{
+  text-decoration: none;
+}
 
 /* =========================
    Logo
@@ -97,6 +101,9 @@
 
 .navbarContainer li:hover {
   color: #2d7d42;
+}
+.activeItem{
+    color: #2d7d42;
 }
 
 
