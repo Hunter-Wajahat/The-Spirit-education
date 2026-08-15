@@ -1,0 +1,356 @@
+.platformSection {
+  width: 100%;
+
+  padding: 95px 25px 110px;
+
+  background: #fffdf9;
+}
+
+
+.platformContainer {
+  max-width: 1050px;
+
+  margin: 0 auto;
+}
+
+
+/* =========================
+   Header
+========================= */
+
+.platformHeader {
+  max-width: 720px;
+
+  margin: 0 auto 60px;
+
+  text-align: center;
+}
+
+
+.platformTag {
+  color: #ea8f24;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  letter-spacing: 2px;
+
+  text-transform: uppercase;
+}
+
+
+.platformHeader h1 {
+  margin: 15px 0;
+
+  color: #203529;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: clamp(40px, 5vw, 56px);
+
+  line-height: 1.15;
+
+  font-weight: 600;
+}
+
+
+.platformHeader h1 span {
+  display: block;
+
+  color: #2d7d42;
+}
+
+
+.platformHeader p {
+  margin: 0;
+
+  color: #737d76;
+
+  font-size: 14px;
+
+  line-height: 1.8;
+}
+
+
+/* =========================
+   Platform Grid
+========================= */
+
+.platformGrid {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 18px;
+}
+
+
+/* =========================
+   Platform Card
+========================= */
+
+.platformCard {
+  position: relative;
+
+  min-height: 150px;
+
+  padding: 28px;
+
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 20px;
+
+  background: #ffffff;
+
+  border: 1px solid #e3e9e4;
+
+  border-radius: 7px;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+
+.platformCard:hover {
+  transform: translateY(-4px);
+
+  border-color: #c4d7c8;
+
+  box-shadow: 0 15px 35px rgba(45, 125, 66, 0.07);
+}
+
+
+/* =========================
+   Icon
+========================= */
+
+.platformIcon {
+  width: 52px;
+  height: 52px;
+  object-fit: cover;
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+
+  font-size: 21px;
+  font-weight: 700;
+  overflow: hidden;
+}
+
+
+.zoomIcon {
+  background: #eef5f0;
+
+  color: #2d7d42;
+}
+
+
+.whatsappIcon {
+  background: #f2f7f1;
+
+  color: #2d7d42;
+}
+
+
+.meetIcon {
+  background: #fff5e9;
+
+  color: #ea8f24;
+}
+
+
+.otherIcon {
+  background: #f3f5f3;
+
+  color: #66736a;
+
+  font-size: 26px;
+}
+
+
+/* =========================
+   Information
+========================= */
+
+.platformInfo {
+  padding-right: 70px;
+}
+
+
+.platformInfo h2 {
+  margin: 2px 0 8px;
+
+  color: #263a2c;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: 21px;
+
+  font-weight: 600;
+}
+
+
+.platformInfo p {
+  margin: 0;
+
+  color: #747e77;
+
+  font-size: 12px;
+
+  line-height: 1.7;
+}
+
+
+/* =========================
+   Status
+========================= */
+
+.platformStatus {
+  position: absolute;
+
+  top: 25px;
+  right: 25px;
+
+  padding: 5px 8px;
+
+  border-radius: 3px;
+
+  background: #f1f7f2;
+
+  color: #2d7d42;
+
+  font-size: 8px;
+  font-weight: 700;
+
+  letter-spacing: 0.6px;
+
+  text-transform: uppercase;
+}
+
+
+/* =========================
+   Bottom Note
+========================= */
+
+.platformNote {
+  max-width: 650px;
+
+  margin: 40px auto 0;
+
+  padding: 17px 22px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 10px;
+
+  border: 1px solid #e5ebe6;
+
+  border-radius: 6px;
+
+  background: #f6faf6;
+}
+
+
+.platformNote > span {
+  color: #ea8f24;
+
+  font-size: 16px;
+}
+
+
+.platformNote p {
+  margin: 0;
+
+  color: #6e7971;
+
+  font-size: 12px;
+
+  line-height: 1.6;
+
+  text-align: center;
+}
+
+
+.platformNote strong {
+  color: #2d7d42;
+}
+
+
+/* =========================
+   Responsive
+========================= */
+
+@media (max-width: 700px) {
+
+  .platformSection {
+    padding: 70px 20px 90px;
+  }
+
+  .platformGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .platformHeader {
+    margin-bottom: 45px;
+  }
+
+  .platformHeader h1 {
+    font-size: 38px;
+  }
+
+  .platformCard {
+    padding: 24px;
+  }
+}
+
+
+@media (max-width: 450px) {
+
+  .platformCard {
+    gap: 14px;
+  }
+
+  .platformIcon {
+    width: 45px;
+    height: 45px;
+
+    font-size: 18px;
+  }
+
+  .platformInfo {
+    padding-right: 0;
+  }
+
+  .platformInfo h2 {
+    font-size: 19px;
+  }
+
+  .platformStatus {
+    position: static;
+
+    margin-left: auto;
+
+    flex-shrink: 0;
+  }
+
+  .platformNote {
+    align-items: flex-start;
+  }
+
+  .platformNote p {
+    text-align: left;
+  }
+}
