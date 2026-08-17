@@ -1,0 +1,29 @@
+{
+  "name": "spirit-edu",
+  "version": "1.0.0",
+  "description": "An academy where we teach quran",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "quran",
+    "teaching",
+    "quran",
+    "learning",
+    "quran",
+    "academy",
+    "the",
+    "spirit",
+    "education"
+  ],
+  "author": "Saqib Syed",
+  "license": "ISC",
+  "dependencies": {
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "mongoose": "^9.9.2"
+  }
+}
