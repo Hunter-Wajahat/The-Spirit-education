@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 
 const authorSchema = new mongoose.Schema({
-    name: String,
+    username: String,
     password: String,
-    author: {
+    admin: {
         type:Boolean,
         default: false
     }
