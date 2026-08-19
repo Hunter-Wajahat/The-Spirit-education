@@ -7,12 +7,14 @@ async function handleAuthor(req, res) {
     try {
 
         if (password == process.env.author_PASS) {
-            const author = new Author({ username, password })
+            
+            const author = new Author({ username, password, admin:true })
             await author.save()
 
             const payload = {
                 user: username,
-                pass: password
+                pass: password,
+                admin: true
             }
             const token = jwt.sign(payload, JWT_SECRET)
 
@@ -22,7 +24,12 @@ async function handleAuthor(req, res) {
                 sameSite: "none"
             }).json({ success: true, redirectUrl: process.env.frontend_server });
         }
+        else{
+            res.status(401).json({unauthorized:"unauthorized", success: false})
+            console.log(req.body)
+        }
     } catch (err) {
         res.status(400).json({ error: err.message });
     }
 }
+module.exports = handleAuthor;
