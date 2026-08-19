@@ -1,0 +1,299 @@
+.signInPage {
+  min-height: 100vh;
+
+  padding: 40px 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #fffdf9;
+}
+
+
+.signInCard {
+  width: 100%;
+  max-width: 430px;
+
+  padding: 45px 40px;
+
+  background: #ffffff;
+
+  border: 1px solid #e4eae5;
+
+  border-radius: 8px;
+
+  box-shadow: 0 15px 45px rgba(45, 125, 66, 0.06);
+}
+
+
+/* =========================
+   Header
+========================= */
+
+.signInHeader {
+  margin-bottom: 35px;
+
+  text-align: center;
+}
+
+
+.signInHeader > span {
+  color: #ea8f24;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  letter-spacing: 2px;
+
+  text-transform: uppercase;
+}
+
+
+.signInHeader h1 {
+  margin: 12px 0 8px;
+
+  color: #203529;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: 38px;
+
+  font-weight: 600;
+}
+
+
+.signInHeader p {
+  margin: 0;
+
+  color: #7a847d;
+
+  font-size: 13px;
+
+  line-height: 1.6;
+}
+
+
+/* =========================
+   Form
+========================= */
+
+.signInForm {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 20px;
+}
+
+
+.inputGroup {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+
+.inputGroup label {
+  color: #34463a;
+
+  font-size: 12px;
+
+  font-weight: 600;
+}
+
+
+.inputGroup input {
+  width: 100%;
+
+  height: 46px;
+
+  padding: 0 14px;
+
+  border: 1px solid #dce4de;
+
+  border-radius: 5px;
+
+  outline: none;
+
+  background: #ffffff;
+
+  color: #263a2c;
+
+  font-size: 13px;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+.inputGroup input::placeholder {
+  color: #a2aaa5;
+}
+
+
+.inputGroup input:focus {
+  border-color: #2d7d42;
+
+  box-shadow: 0 0 0 3px rgba(45, 125, 66, 0.08);
+}
+
+
+/* =========================
+   Options
+========================= */
+
+.formOptions {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 10px;
+
+  margin-top: -3px;
+}
+
+
+.rememberMe {
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  color: #727c75;
+
+  font-size: 11px;
+
+  cursor: pointer;
+}
+
+
+.rememberMe input {
+  accent-color: #2d7d42;
+
+  cursor: pointer;
+}
+
+
+.formOptions a {
+  color: #2d7d42;
+
+  font-size: 11px;
+
+  font-weight: 600;
+
+  text-decoration: none;
+}
+
+
+.formOptions a:hover {
+  color: #ea8f24;
+}
+
+
+/* =========================
+   Sign In Button
+========================= */
+
+.signInButton {
+  width: 100%;
+
+  height: 46px;
+
+  margin-top: 5px;
+
+  border: none;
+
+  border-radius: 5px;
+
+  background: #2d7d42;
+
+  color: #ffffff;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+.signInButton:hover {
+  background: #256b37;
+
+  transform: translateY(-1px);
+}
+
+
+/* =========================
+   Footer
+========================= */
+
+.signInFooter {
+  margin-top: 28px;
+
+  padding-top: 23px;
+
+  border-top: 1px solid #edf0ed;
+
+  text-align: center;
+}
+
+
+.signInFooter p {
+  margin: 0;
+
+  color: #7b857e;
+
+  font-size: 12px;
+}
+
+
+.signInFooter a {
+  color: #2d7d42;
+
+  font-weight: 700;
+
+  text-decoration: none;
+}
+
+
+.signInFooter a:hover {
+  color: #ea8f24;
+}
+
+
+/* =========================
+   Mobile
+========================= */
+
+@media (max-width: 500px) {
+
+  .signInPage {
+    padding: 25px 15px;
+  }
+
+  .signInCard {
+    padding: 35px 25px;
+  }
+
+  .signInHeader h1 {
+    font-size: 34px;
+  }
+
+  .formOptions {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+}
