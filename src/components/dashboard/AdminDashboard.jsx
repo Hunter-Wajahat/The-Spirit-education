@@ -1,7 +1,60 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./AdminDashboard.css";
+import axios from "axios";
+import Loader from "../loader/Loader";
 
 const AdminDashboard = () => {
+  const [authorData, setauthorData] = useState()
+  const [loading, setloading] = useState()
+  const [formLoading, setformLoading] = useState()
+
+  useEffect(() => {
+    async function getauth() {
+      setloading(false)
+      const url = `${import.meta.env.VITE_SERVER_URL}/api/my_dashboard`;
+      const response = await axios.get(url, { withCredentials: true })
+      console.log(response.data)
+      setauthorData(response.data)
+      setloading(response.data.admin)
+
+    }
+    getauth()
+  }, [])
+
+  const [formData, setFormData] = useState({
+    title: '',
+    author: '',
+    catagory: '',
+    body: '',
+
+  });
+
+  // Handle input changes dynamically
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value, // Updates only the modified field
+    }));
+  };
+
+  // Handle form submission
+  const handleSubmit = async (event) => {
+    event.preventDefault(); // Prevents the browser from reloading the page
+    setformLoading(true)
+    console.log('Submitted Data:', formData);
+    const url = `${import.meta.env.VITE_SERVER_URL}/api/post_blog`
+    const payload = formData;
+    const response = await axios.post(url, payload, {
+      withCredentials: true
+    })
+    setformLoading(false)
+    console.log("posted?: ", response.data)
+  };
+
+  if (!loading) {
+    return <h1><Loader /></h1>
+  }
   return (
     <div className="adminDashboard">
 
@@ -84,7 +137,7 @@ const AdminDashboard = () => {
             </div>
 
             <div>
-              <strong>Admin</strong>
+              <strong>{authorData.username}</strong>
               <span>Administrator</span>
             </div>
 
@@ -106,7 +159,7 @@ const AdminDashboard = () => {
           </div>
 
 
-          <div className="statCard">
+          {/* <div className="statCard">
             <div className="statIcon">◷</div>
 
             <div>
@@ -123,7 +176,7 @@ const AdminDashboard = () => {
               <span>Categories</span>
               <strong>08</strong>
             </div>
-          </div>
+          </div> */}
 
         </section>
 
@@ -138,15 +191,18 @@ const AdminDashboard = () => {
               <h2>Create New Blog</h2>
             </div>
 
-            <button className="draftButton">
-              Save Draft
-            </button>
+
 
           </div>
 
 
-          <form className="blogForm">
-
+          <form className="blogForm" onSubmit={handleSubmit}>
+            <button
+            type="submit"
+              onClick={() => formData.publish = false}
+              className="draftButton">
+              Save Draft
+            </button>
             {/* Title */}
             <div className="formField fullField">
 
@@ -155,9 +211,11 @@ const AdminDashboard = () => {
               </label>
 
               <input
+                name="title"
                 id="title"
                 type="text"
                 placeholder="Enter your blog title..."
+                onChange={handleChange}
               />
 
             </div>
@@ -171,9 +229,11 @@ const AdminDashboard = () => {
               </label>
 
               <input
+                name="author"
                 id="author"
                 type="text"
                 placeholder="Author name"
+                onChange={handleChange}
               />
 
             </div>
@@ -186,7 +246,7 @@ const AdminDashboard = () => {
                 Category
               </label>
 
-              <select id="category">
+              <select name="catagory" id="category" onChange={handleChange}>
 
                 <option value="">
                   Select category
@@ -233,9 +293,11 @@ const AdminDashboard = () => {
               </div>
 
               <textarea
+                name="body"
                 id="body"
                 rows="14"
                 placeholder="Start writing your blog..."
+                onChange={handleChange}
               />
 
             </div>
@@ -244,18 +306,19 @@ const AdminDashboard = () => {
             {/* Actions */}
             <div className="blogActions">
 
-              <button
+              {/* <button
                 type="button"
                 className="cancelButton"
               >
                 Cancel
-              </button>
+              </button> */}
 
               <button
+                onClick={() => formData.publish = true}
                 type="submit"
                 className="publishButton"
               >
-                Publish Blog
+                {formLoading ? "Loading" : "Publish Blog"}
               </button>
 
             </div>

@@ -547,6 +547,9 @@
 
   color: #2d7d42;
 }
+.draftButton{
+  width: 100px;
+}
 
 
 .blogActions {
