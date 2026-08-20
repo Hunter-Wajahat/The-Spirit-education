@@ -10,7 +10,7 @@ function DashboardAuth(req, res) {
         res.json({ username: decoded.user, admin: decoded.admin })
 
     } catch (err) {
-        res.json({ message: `there is an error: ${err}` })
+        res.json({ message: `there is an error: ${err}`, admin:false })
     }
 }
 
