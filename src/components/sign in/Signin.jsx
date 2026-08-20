@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import "./SignIn.css";
 import axios from 'axios'
+import { useNavigate } from "react-router-dom";
 const SignIn = () => {
+    const navigate = useNavigate()
     const [formData, setFormData] = useState({
         username: '',
         password: '',
@@ -26,6 +28,7 @@ const SignIn = () => {
             withCredentials: true
         });
         console.log(response.data)
+        navigate("/")
     };
     return (
         <main className="signInPage">

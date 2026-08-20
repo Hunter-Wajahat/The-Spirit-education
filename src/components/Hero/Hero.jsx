@@ -63,7 +63,7 @@ const Hero = () => {
         <div className="heroCircle"></div>
 
         <div className="quranCard">
-          {/* <div className="quranDecoration">
+          <div className="quranDecoration">
             ۞
           </div>
 
@@ -77,8 +77,8 @@ const Hero = () => {
 
           <span className="ayahReference">
             Al-Muzzammil · 73:4
-          </span> */}
-          <img height="320px" src={myPicture} alt="" />
+          </span>
+          {/* <img height="320px" src={myPicture} alt="" /> */}
         </div>
 
       </div>
