@@ -14,6 +14,8 @@ import Download from './components/download/Download'
 import HadiyahFee from './components/hadiyahfee/HadyahFee'
 import Platforms from './components/platform/Platform'
 import Footer from './components/foot/Footer'
+import SignIn from './components/sign in/signin'
+import AdminDashboard from './components/dashboard/AdminDashboard'
 
 function App() {
   const router = createBrowserRouter([
@@ -91,6 +93,19 @@ function App() {
       element: <>
         <Navbar />
          <Platforms/>
+      </>
+    },
+    {
+      path: "/my_dashboard",
+      element: <>
+        {/* <Navbar /> */}
+         <AdminDashboard/>
+      </>
+    },
+    {
+      path: "/signin",
+      element: <>
+         <SignIn/>
       </>
     },
   ])
