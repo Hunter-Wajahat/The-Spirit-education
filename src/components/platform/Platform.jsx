@@ -3,6 +3,7 @@ import "./Platforms.css";
 import zoomIcon from '../../assets/zoomLogo.webp'
 import meet from '../../assets/meet.webp'
 import whatsappIcon from '../../assets/whatsapp icon.webp'
+import team from '../../assets/microsoft_team.webp'
 
 const Platforms = () => {
   return (
@@ -92,6 +93,26 @@ const Platforms = () => {
 
               <p>
                 Attend your Quran lessons through Google Meet with a simple
+                and convenient online experience.
+              </p>
+            </div>
+
+            <span className="platformStatus">
+              Available
+            </span>
+
+          </div>
+          <div className="platformCard">
+
+            <div className="platformIcon meetIcon">
+              <img height="50px" src={team}/>
+            </div>
+
+            <div className="platformInfo">
+              <h2>Microsoft Team</h2>
+
+              <p>
+                Attend your Quran lessons through Microsoft Team with a simple
                 and convenient online experience.
               </p>
             </div>
