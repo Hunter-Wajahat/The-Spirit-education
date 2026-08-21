@@ -2,11 +2,19 @@ import React, { useEffect, useState } from "react";
 import "./AdminDashboard.css";
 import axios from "axios";
 import Loader from "../loader/Loader";
+import { useForm } from "react-hook-form"
 
 const AdminDashboard = () => {
   const [authorData, setauthorData] = useState()
   const [loading, setloading] = useState()
   const [formLoading, setformLoading] = useState()
+  const [formData, setformData] = useState()
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm()
 
   useEffect(() => {
     async function getauth() {
@@ -21,30 +29,14 @@ const AdminDashboard = () => {
     getauth()
   }, [])
 
-  const [formData, setFormData] = useState({
-    title: '',
-    author: '',
-    catagory: '',
-    body: '',
 
-  });
-
-  // Handle input changes dynamically
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value, // Updates only the modified field
-    }));
-  };
 
   // Handle form submission
-  const handleSubmit = async (event) => {
-    event.preventDefault(); // Prevents the browser from reloading the page
+  const onSubmit = async (data) => {
     setformLoading(true)
-    console.log('Submitted Data:', formData);
+    console.log('Submitted Data:', data);
     const url = `${import.meta.env.VITE_SERVER_URL}/api/post_blog`
-    const payload = formData;
+    const payload = data;
     const response = await axios.post(url, payload, {
       withCredentials: true
     })
@@ -196,13 +188,40 @@ const AdminDashboard = () => {
           </div>
 
 
-          <form className="blogForm" onSubmit={handleSubmit}>
+          <form className="blogForm" onSubmit={handleSubmit(onSubmit)}>
             <button
-            type="submit"
-              onClick={() => formData.publish = false}
-              className="draftButton">
+            name="draft"
+              type="submit"
+              className="draftButton"
+              encType="multipart/form-data">
               Save Draft
             </button>
+            <div className="formField fullField">
+              {/* blog image */}
+              <label htmlFor="image">
+                Blog image
+              </label>
+
+              <div className="fileInputWrapper">
+                <label className="fileInputButton" htmlFor="blogimg">
+                  Choose file
+                </label>
+
+                <span className="fileInputText">
+                  {'No file selected'}
+                </span>
+
+                <input
+                  {...register("blogimg")}
+                  name="blogimg"
+                  id="image"
+                  type="file"
+                  accept="image/*"
+
+                />
+              </div>
+            </div>
+
             {/* Title */}
             <div className="formField fullField">
 
@@ -211,11 +230,12 @@ const AdminDashboard = () => {
               </label>
 
               <input
+                {...register("title")}
                 name="title"
                 id="title"
                 type="text"
                 placeholder="Enter your blog title..."
-                onChange={handleChange}
+
               />
 
             </div>
@@ -229,11 +249,11 @@ const AdminDashboard = () => {
               </label>
 
               <input
+                {...register("author")}
                 name="author"
                 id="author"
                 type="text"
                 placeholder="Author name"
-                onChange={handleChange}
               />
 
             </div>
@@ -246,7 +266,7 @@ const AdminDashboard = () => {
                 Category
               </label>
 
-              <select name="catagory" id="category" onChange={handleChange}>
+              <select {...register("catagory")} name="catagory" id="category">
 
                 <option value="">
                   Select category
@@ -293,11 +313,11 @@ const AdminDashboard = () => {
               </div>
 
               <textarea
+                {...register("body")}
                 name="body"
                 id="body"
                 rows="14"
                 placeholder="Start writing your blog..."
-                onChange={handleChange}
               />
 
             </div>
@@ -314,7 +334,7 @@ const AdminDashboard = () => {
               </button> */}
 
               <button
-                onClick={() => formData.publish = true}
+                // onClick={() => formData.publish = true}
                 type="submit"
                 className="publishButton"
               >

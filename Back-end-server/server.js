@@ -14,6 +14,8 @@ app.use(cors({
   credentials: true               // allow sending cookies
 }));
 
+app.use(express.json({ limit: "10mb" })); // allow up to 10 MB
+app.use(express.urlencoded({ limit: "10mb", extended: true }));
 app.use(express.json());
 app.use(cookieParser())
 app.use('/api', userRoutes)

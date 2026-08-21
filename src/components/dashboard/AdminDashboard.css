@@ -466,6 +466,91 @@
 }
 
 
+.fileInputWrapper {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  min-height: 44px;
+
+  border: 1px solid #dfe6e1;
+  border-radius: 5px;
+
+  background: #fcfdfc;
+
+  overflow: hidden;
+
+  transition: border-color 0.2s ease,
+              box-shadow 0.2s ease;
+}
+
+
+.fileInputWrapper:focus-within {
+  border-color: #2d7d42;
+
+  box-shadow: 0 0 0 3px rgba(45, 125, 66, 0.07);
+}
+
+
+.fileInputWrapper input[type="file"] {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  opacity: 0;
+
+  cursor: pointer;
+}
+
+
+.fileInputButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 44px;
+
+  padding: 0 18px;
+
+  border: none;
+  background: #2d7d42;
+
+  color: white;
+
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  transition: background 0.2s ease;
+}
+
+
+.fileInputButton:hover {
+  background: #256b37;
+}
+
+
+.fileInputText {
+  flex: 1;
+
+  padding: 0 14px;
+
+  color: #6d7a72;
+
+  font-size: 11px;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
 .formField textarea {
   min-height: 260px;
 
