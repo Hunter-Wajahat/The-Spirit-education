@@ -1,8 +1,11 @@
 const Blog = require('../models/blogSchema')
 async function postBloag(req, res) {
+    console.log(req.body)
     try {  
+        
         const {author, body, catagory, title, publish} = req.body;
-        const blog = new Blog({author, body, catagory, tittle:title, publish})
+        console.log(req.body)
+        const blog = new Blog({author, body, catagory, tittle:title, publish  })
         await blog.save()
         res.status(201).json({message:"blog is saved"})
     } catch (err) {
