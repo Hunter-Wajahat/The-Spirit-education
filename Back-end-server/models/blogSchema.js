@@ -7,7 +7,7 @@ const blogSchema = new mongoose.Schema({
     date:{type: Date, default: Date.now},
     catagory: String,
     publish: Boolean,
-   blogimgBase64: String
+   blogImage: String
 });
 
 const Blog = mongoose.model('Blog', blogSchema);
