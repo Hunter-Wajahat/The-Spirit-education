@@ -8,13 +8,15 @@ const AdminDashboard = () => {
   const [authorData, setauthorData] = useState()
   const [loading, setloading] = useState()
   const [formLoading, setformLoading] = useState()
-  const [formData, setformData] = useState()
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm()
+  const [formData, setFormData] = useState({
+    blogimg: '',
+    title: '',
+    author: '',
+    catagory: '',
+    body: '',
+  })
+  const [fileName, setFileName] = useState("")
+
 
   useEffect(() => {
     async function getauth() {
@@ -29,15 +31,23 @@ const AdminDashboard = () => {
     getauth()
   }, [])
 
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value, // Updates only the modified field
+    }));
+  };
 
 
   // Handle form submission
-  const onSubmit = async (data) => {
+  const handleSubmit = async (event) => {
     setformLoading(true)
-    console.log('Submitted Data:', data);
+    event.preventDefault();
+
+    console.log('Submitted Data:', formData);
     const url = `${import.meta.env.VITE_SERVER_URL}/api/post_blog`
-    const payload = data;
-    const response = await axios.post(url, payload, {
+    const response = await axios.post(url, formData, {
       withCredentials: true
     })
     setformLoading(false)
@@ -188,16 +198,16 @@ const AdminDashboard = () => {
           </div>
 
 
-          <form className="blogForm" onSubmit={handleSubmit(onSubmit)}>
+          <form className="blogForm" onSubmit={handleSubmit}>
             <button
-            name="draft"
               type="submit"
+              onClick={() => formData.publish = false}
               className="draftButton"
               encType="multipart/form-data">
               Save Draft
             </button>
-            <div className="formField fullField">
-              {/* blog image */}
+            {/* <div className="formField fullField">
+              
               <label htmlFor="image">
                 Blog image
               </label>
@@ -208,11 +218,11 @@ const AdminDashboard = () => {
                 </label>
 
                 <span className="fileInputText">
-                  {'No file selected'}
+                  {formData.blogimg || "No file selected"}
                 </span>
 
                 <input
-                  {...register("blogimg")}
+                  onChange={handleChange}
                   name="blogimg"
                   id="image"
                   type="file"
@@ -220,7 +230,7 @@ const AdminDashboard = () => {
 
                 />
               </div>
-            </div>
+            </div> */}
 
             {/* Title */}
             <div className="formField fullField">
@@ -230,7 +240,7 @@ const AdminDashboard = () => {
               </label>
 
               <input
-                {...register("title")}
+                onChange={handleChange}
                 name="title"
                 id="title"
                 type="text"
@@ -249,7 +259,7 @@ const AdminDashboard = () => {
               </label>
 
               <input
-                {...register("author")}
+                onChange={handleChange}
                 name="author"
                 id="author"
                 type="text"
@@ -266,7 +276,7 @@ const AdminDashboard = () => {
                 Category
               </label>
 
-              <select {...register("catagory")} name="catagory" id="category">
+              <select onChange={handleChange} name="catagory" id="category">
 
                 <option value="">
                   Select category
@@ -313,7 +323,7 @@ const AdminDashboard = () => {
               </div>
 
               <textarea
-                {...register("body")}
+                onChange={handleChange}
                 name="body"
                 id="body"
                 rows="14"
@@ -334,11 +344,11 @@ const AdminDashboard = () => {
               </button> */}
 
               <button
-                // onClick={() => formData.publish = true}
+                onClick={() => formData.publish = true}
                 type="submit"
                 className="publishButton"
               >
-                {formLoading ? "Loading" : "Publish Blog"}
+                {formLoading ? "Loading..." : "Publish Blog"}
               </button>
 
             </div>
