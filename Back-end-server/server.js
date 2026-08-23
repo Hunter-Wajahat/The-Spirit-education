@@ -6,6 +6,8 @@ const connectDB = require('./models/db');
 const cookieParser = require('cookie-parser');
 const cors = require('cors')
 const userRoutes = require('./routes/routers');
+const multer = require("multer");
+const path = require("path");
 
 connectDB()
 
@@ -14,6 +16,7 @@ app.use(cors({
   credentials: true               // allow sending cookies
 }));
 
+app.use("/uploads", express.static("uploads"));
 app.use(express.json({ limit: "10mb" })); // allow up to 10 MB
 app.use(express.urlencoded({ limit: "10mb", extended: true }));
 app.use(express.json());
