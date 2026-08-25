@@ -2,6 +2,48 @@ import React from "react";
 import "./CourseSections.css";
 
 const BasicQaida = () => {
+  const Basic_qaida = [
+    {
+      indexNumber: '01',
+      courseTitle: "Arabic Letters",
+      shortSummery: "Recognize and correctly pronounce the Arabic letters."
+    },
+    {
+      indexNumber: '02',
+      courseTitle: "Harakaat",
+      shortSummery: "Learn Fatha, Kasra, Damma and their correct pronunciation."
+    },
+    {
+      indexNumber: '03',
+      courseTitle: "Tanween",
+      shortSummery: "Understand the basic sounds and usage of Tanween."
+    },
+    {
+      indexNumber: '04',
+      courseTitle: "Sukoon",
+      shortSummery: "Learn how letters with Sukoon are pronounced correctly."
+    },
+    {
+      indexNumber: '05',
+      courseTitle: "Tashdeed",
+      shortSummery: "Understand doubled letters and practice their pronunciation."
+    },
+    {
+      indexNumber: '06',
+      courseTitle: "Madd",
+      shortSummery: "Learn the basics of stretching sounds while reading."
+    },
+    {
+      indexNumber: '07',
+      courseTitle: "Joining Letters",
+      shortSummery: "Practice connecting Arabic letters to form readable words."
+    },
+    {
+      indexNumber: '08',
+      courseTitle: "Quran Reading Practice",
+      shortSummery: "Apply the lessons through guided Quran reading practice."
+    },
+  ]
   return (
     <section className="courseSection">
 
@@ -24,71 +66,16 @@ const BasicQaida = () => {
 
 
         <div className="courseTopics">
+        {Basic_qaida.map(qaida=>(
 
-          <div className="courseTopic">
-            <span>01</span>
-            <h3>Arabic Letters</h3>
+          <div key={qaida.indexNumber} className="courseTopic">
+            <span>{qaida.indexNumber}</span>
+            <h3>{qaida.courseTitle}</h3>
             <p>
-              Recognize and correctly pronounce the Arabic letters.
+              {qaida.shortSummery}
             </p>
           </div>
-
-          <div className="courseTopic">
-            <span>02</span>
-            <h3>Harakaat</h3>
-            <p>
-              Learn Fatha, Kasra, Damma and their correct pronunciation.
-            </p>
-          </div>
-
-          <div className="courseTopic">
-            <span>03</span>
-            <h3>Tanween</h3>
-            <p>
-              Understand the basic sounds and usage of Tanween.
-            </p>
-          </div>
-
-          <div className="courseTopic">
-            <span>04</span>
-            <h3>Sukoon</h3>
-            <p>
-              Learn how letters with Sukoon are pronounced correctly.
-            </p>
-          </div>
-
-          <div className="courseTopic">
-            <span>05</span>
-            <h3>Tashdeed</h3>
-            <p>
-              Understand doubled letters and practice their pronunciation.
-            </p>
-          </div>
-
-          <div className="courseTopic">
-            <span>06</span>
-            <h3>Madd</h3>
-            <p>
-              Learn the basics of stretching sounds while reading.
-            </p>
-          </div>
-
-          <div className="courseTopic">
-            <span>07</span>
-            <h3>Joining Letters</h3>
-            <p>
-              Practice connecting Arabic letters to form readable words.
-            </p>
-          </div>
-
-          <div className="courseTopic">
-            <span>08</span>
-            <h3>Quran Reading Practice</h3>
-            <p>
-              Apply the lessons through guided Quran reading practice.
-            </p>
-          </div>
-
+          ))}
         </div>
 
       </div>

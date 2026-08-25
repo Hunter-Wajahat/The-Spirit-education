@@ -2,6 +2,38 @@ import React from "react";
 import "./CourseSections.css";
 
 const QuranTranslation = () => {
+  const quranTranslation = [
+       {
+      indexNumber:"01",
+      courseTitle: "Quranic Vocabulary",
+      shortSummery: "Build familiarity with commonly used words and expressions found in the Quran."
+    },
+    {
+      indexNumber: "02",
+      courseTitle: "Word-by-Word Translation",
+      shortSummery: "Understand the meaning of important Quranic words and phrases."
+    },
+    {
+      indexNumber: "03",
+      courseTitle: "Ayah Translation",
+      shortSummery: "Study the meaning of complete verses in an easy-to-understand way."
+    },
+    {
+      indexNumber: "04",
+      courseTitle: "Understanding the Message",
+      shortSummery: "Explore the guidance and lessons contained within selected verses."
+    },
+    {
+      indexNumber: "05",
+      courseTitle: "Selected Surah Study",
+      shortSummery: "Study selected Surahs with their translation and important lessons."
+    },
+    {
+      indexNumber: "06",
+      courseTitle: "Basic Tafsir",
+      shortSummery: "Gain introductory knowledge of the context and explanation of selected Quranic passages."
+    },
+  ]
   return (
     <section className="courseSection">
 
@@ -24,56 +56,16 @@ const QuranTranslation = () => {
 
 
         <div className="courseTopics">
+        {quranTranslation.map(quran=>(
 
           <div className="courseTopic">
-            <span>01</span>
-            <h3>Quranic Vocabulary</h3>
+            <span>{quran.indexNumber}</span>
+            <h3>{quran.courseTitle}</h3>
             <p>
-              Build familiarity with commonly used words and expressions
-              found in the Quran.
+              {quran.shortSummery}
             </p>
           </div>
-
-          <div className="courseTopic">
-            <span>02</span>
-            <h3>Word-by-Word Translation</h3>
-            <p>
-              Understand the meaning of important Quranic words and phrases.
-            </p>
-          </div>
-
-          <div className="courseTopic">
-            <span>03</span>
-            <h3>Ayah Translation</h3>
-            <p>
-              Study the meaning of complete verses in an easy-to-understand way.
-            </p>
-          </div>
-
-          <div className="courseTopic">
-            <span>04</span>
-            <h3>Understanding the Message</h3>
-            <p>
-              Explore the guidance and lessons contained within selected verses.
-            </p>
-          </div>
-
-          <div className="courseTopic">
-            <span>05</span>
-            <h3>Selected Surah Study</h3>
-            <p>
-              Study selected Surahs with their translation and important lessons.
-            </p>
-          </div>
-
-          <div className="courseTopic">
-            <span>06</span>
-            <h3>Basic Tafsir</h3>
-            <p>
-              Gain introductory knowledge of the context and explanation
-              of selected Quranic passages.
-            </p>
-          </div>
+          ))}
 
         </div>
 

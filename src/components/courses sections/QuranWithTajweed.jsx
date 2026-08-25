@@ -2,6 +2,48 @@ import React from "react";
 import "./CourseSections.css";
 
 const QuranTajweed = () => {
+  const quranTajweed = [
+    {
+      indexNumber: "01",
+      courseTitle: "Makharij al-Huruf",
+      shortSummery: "Learn the correct points of articulation of Arabic letters."
+    },
+    {
+      indexNumber: "02",
+      courseTitle: "Sifaat al-Huruf",
+      shortSummery: "Understand the characteristics and qualities of Quranic letters."
+    },
+    {
+      indexNumber: "03",
+      courseTitle: "Noon Saakin & Tanween",
+      shortSummery: "Learn the essential rules related to Noon Saakin and Tanween."
+    },
+    {
+      indexNumber: "04",
+      courseTitle: "Meem Saakin",
+      shortSummery: "Understand the rules of Meem Saakin during Quranic recitation."
+    },
+    {
+      indexNumber: "05",
+      courseTitle: "Madd",
+      shortSummery: "Learn the different types of elongation used in Quranic recitation."
+    },
+    {
+      indexNumber: "06",
+      courseTitle: "Qalqalah",
+      shortSummery: "Practice the correct pronunciation of letters with Qalqalah."
+    },
+    {
+      indexNumber: "07",
+      courseTitle: "Ghunnah",
+      shortSummery: "Learn the correct nasal sound and its application in recitation."
+    },
+    {
+      indexNumber: "08",
+      courseTitle: "Waqf & Ibtida",
+      shortSummery: "Understand where to stop and where to begin while reciting."
+    }
+  ]
   return (
     <section className="courseSection">
 
@@ -24,71 +66,18 @@ const QuranTajweed = () => {
 
 
         <div className="courseTopics">
+          {quranTajweed.map(tajweed => (
 
-          <div className="courseTopic">
-            <span>01</span>
-            <h3>Makharij al-Huruf</h3>
-            <p>
-              Learn the correct points of articulation of Arabic letters.
-            </p>
-          </div>
 
-          <div className="courseTopic">
-            <span>02</span>
-            <h3>Sifaat al-Huruf</h3>
-            <p>
-              Understand the characteristics and qualities of Quranic letters.
-            </p>
-          </div>
+            <div key={tajweed.indexNumber} className="courseTopic">
+              <span>{tajweed.indexNumber}</span>
+              <h3>{tajweed.courseTitle}</h3>
+              <p>
+                {tajweed.shortSummery}
+              </p>
+            </div>
 
-          <div className="courseTopic">
-            <span>03</span>
-            <h3>Noon Saakin & Tanween</h3>
-            <p>
-              Learn the essential rules related to Noon Saakin and Tanween.
-            </p>
-          </div>
-
-          <div className="courseTopic">
-            <span>04</span>
-            <h3>Meem Saakin</h3>
-            <p>
-              Understand the rules of Meem Saakin during Quranic recitation.
-            </p>
-          </div>
-
-          <div className="courseTopic">
-            <span>05</span>
-            <h3>Madd</h3>
-            <p>
-              Learn the different types of elongation used in Quranic recitation.
-            </p>
-          </div>
-
-          <div className="courseTopic">
-            <span>06</span>
-            <h3>Qalqalah</h3>
-            <p>
-              Practice the correct pronunciation of letters with Qalqalah.
-            </p>
-          </div>
-
-          <div className="courseTopic">
-            <span>07</span>
-            <h3>Ghunnah</h3>
-            <p>
-              Learn the correct nasal sound and its application in recitation.
-            </p>
-          </div>
-
-          <div className="courseTopic">
-            <span>08</span>
-            <h3>Waqf & Ibtida</h3>
-            <p>
-              Understand where to stop and where to begin while reciting.
-            </p>
-          </div>
-
+          ))}
         </div>
 
       </div>
