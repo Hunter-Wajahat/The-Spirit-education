@@ -1,7 +1,12 @@
 import React from "react";
 import "./Blog.css";
+import { useSelector } from "react-redux";
+import { Link } from 'react-router-dom'
+
 
 const Blog = () => {
+  const blogs = useSelector((state) => state.blogData.blogData)
+  console.log("the blog data coming from redu: ", blogs)
   return (
     <section className="blogPage">
 
@@ -22,6 +27,7 @@ const Blog = () => {
             Explore articles, Islamic guidance, Quranic reflections,
             and useful resources to help you learn and grow.
           </p>
+
         </div>
 
 
@@ -29,143 +35,39 @@ const Blog = () => {
         <div className="blogGrid">
 
           {/* Blog Card */}
-          <article className="blogCard">
+          {blogs.map((blog) =>(
+          <article key={blog._id} className="blogCard">
 
-            <div className="blogImage">
+            {/* <div className="blogImage">
               <img
                 src="https://images.unsplash.com/photo-1609599006353-e629aaabfeae?auto=format&fit=crop&w=900&q=80"
                 alt="Quran"
               />
-            </div>
+            </div> */}
 
             <div className="blogContent">
 
               <div className="blogMeta">
-                <span>Quran</span>
-                <small>August 18, 2026</small>
+                <span>{blog.catagory}</span>
+                <small>{blog.date}</small>
               </div>
 
               <h2>
-                Why Learning the Quran Should Be a Part of Our Daily Life
+                {blog.tittle} <br />~{blog.author}
               </h2>
 
-              <p>
-                Discover how regular Quranic learning can strengthen
-                your connection with Allah and bring peace into your life.
+              <p className="bodyIncard">
+                {blog.body}
               </p>
 
-              <a href="#" className="readMore">
+              <Link to={`/blog/${blog._id}`} className="readMore">
                 Read Article <span>→</span>
-              </a>
+              </Link>
 
             </div>
 
           </article>
-
-
-          {/* Blog Card */}
-          <article className="blogCard">
-
-            <div className="blogImage">
-              <img
-                src="https://images.unsplash.com/photo-1585036156171-384164a8c675?auto=format&fit=crop&w=900&q=80"
-                alt="Islamic learning"
-              />
-            </div>
-
-            <div className="blogContent">
-
-              <div className="blogMeta">
-                <span>Learning</span>
-                <small>August 12, 2026</small>
-              </div>
-
-              <h2>
-                How to Build a Consistent Quran Reading Habit
-              </h2>
-
-              <p>
-                Simple and practical steps to help you create a
-                consistent Quran reading routine.
-              </p>
-
-              <a href="#" className="readMore">
-                Read Article <span>→</span>
-              </a>
-
-            </div>
-
-          </article>
-
-
-          {/* Blog Card */}
-          <article className="blogCard">
-
-            <div className="blogImage">
-              <img
-                src="https://images.unsplash.com/photo-1603866643283-3b6b3b5e0c1e?auto=format&fit=crop&w=900&q=80"
-                alt="Quran study"
-              />
-            </div>
-
-            <div className="blogContent">
-
-              <div className="blogMeta">
-                <span>Tajweed</span>
-                <small>August 05, 2026</small>
-              </div>
-
-              <h2>
-                Understanding the Importance of Tajweed
-              </h2>
-
-              <p>
-                Learn why Tajweed matters and how correct pronunciation
-                improves the beauty and accuracy of Quranic recitation.
-              </p>
-
-              <a href="#" className="readMore">
-                Read Article <span>→</span>
-              </a>
-
-            </div>
-
-          </article>
-
-
-          {/* Blog Card */}
-          <article className="blogCard">
-
-            <div className="blogImage">
-              <img
-                src="https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?auto=format&fit=crop&w=900&q=80"
-                alt="Islamic book"
-              />
-            </div>
-
-            <div className="blogContent">
-
-              <div className="blogMeta">
-                <span>Islamic Studies</span>
-                <small>July 29, 2026</small>
-              </div>
-
-              <h2>
-                Teaching Children the Quran in a Simple Way
-              </h2>
-
-              <p>
-                Helpful ideas for parents who want to make Quranic
-                learning engaging and meaningful for their children.
-              </p>
-
-              <a href="#" className="readMore">
-                Read Article <span>→</span>
-              </a>
-
-            </div>
-
-          </article>
+          ))}
 
         </div>
 

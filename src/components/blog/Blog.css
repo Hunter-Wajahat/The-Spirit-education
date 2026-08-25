@@ -255,6 +255,12 @@
 .readMore:hover span {
   transform: translateX(4px);
 }
+.bodyIncard{
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3; /* Change this number to limit to 1, 2, 4, etc. lines */
+  overflow: hidden;
+}
 
 
 /* =========================
