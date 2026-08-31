@@ -3,13 +3,14 @@ const fs = require("fs");
 const { ZipArchive } = require("archiver");
 
 function downloadFolder(req, res) {
-
+    
+    const {paraNumber} = req.query
     const folderPath = path.join(
         __dirname,
         "..",
         "public",
         "quran",
-        "para01"
+        paraNumber
     );
 
     console.log("Folder:", folderPath);
@@ -24,7 +25,7 @@ function downloadFolder(req, res) {
     res.setHeader("Content-Type", "application/zip");
     res.setHeader(
         "Content-Disposition",
-        'attachment; filename="para01.zip"'
+        `attachment; filename="${paraNumber}.zip"`
     );
 
     // Create ZIP archive
