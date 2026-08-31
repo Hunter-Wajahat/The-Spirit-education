@@ -10,18 +10,18 @@ const Navbar = () => {
                 <img src={logo} alt="Logo" />
             </h1>
             <ul>
-                <NavLink className={(e)=> {return e.isActive?"activeItem": ""}} to="/"><li>Home</li></NavLink>
-                <a className={(e)=> {return e.isActive?"activeItem": ""}} href="#about"><li>About</li></a>
-                <NavLink className={(e)=> {return e.isActive?"activeItem": ""}} to="/blog"><li>Blog</li></NavLink>
-                <NavLink className={(e)=> {return e.isActive?"activeItem": ""}} to="/courses"><li>Courses</li></NavLink>
-                <NavLink className={(e)=> {return e.isActive?"activeItem": ""}} to="/download"><li>Download</li></NavLink>
+                <NavLink className="activeItem" to="/"><li>Home</li></NavLink>
+                <a className="activeItem" href="#about"><li>About</li></a>
+                <NavLink className="activeItem" to="/blog"><li>Blog</li></NavLink>
+                <NavLink className="activeItem" to="/courses"><li>Courses</li></NavLink>
+                <NavLink className="activeItem" to="/download"><li>Download</li></NavLink>
                 {/* <NavLink className={(e)=> {return e.isActive?"activeItem": ""}} to="/library"><li>Library</li></NavLink> */}
-                <NavLink className={(e)=> {return e.isActive?"activeItem": ""}} to="/hadiyah-fee"><li>Hadiyah/Fee</li></NavLink>
-                <NavLink className={(e)=> {return e.isActive?"activeItem": ""}} to="/platform"><li>Platform</li></NavLink>
+                <NavLink className="activeItem" to="/hadiyah-fee"><li>Hadiyah/Fee</li></NavLink>
+                <NavLink className="activeItem" to="/platform"><li>Platform</li></NavLink>
             </ul>
-            <button className="signInBtn">
+            {/* <button className="signInBtn">
     Sign In
-</button>
+</button> */}
         </div>
     )
 }
