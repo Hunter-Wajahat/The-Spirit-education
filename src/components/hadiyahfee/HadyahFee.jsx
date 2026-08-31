@@ -57,10 +57,11 @@ const HadiyahFee = () => {
               <li>✓ Basic Quran Reading</li>
               <li>✓ Flexible schedule</li>
             </ul>
-
+          <a target="_blank" href="https://wa.me/923446364513?text=Hi%20Sir,%20i%20want%20to%20buy%20this%20Basic%20plan">
             <button className="planButton">
               Choose Plan
             </button>
+          </a>
 
           </div>
 
@@ -97,10 +98,11 @@ const HadiyahFee = () => {
               <li>✓ Progress guidance</li>
               <li>✓ Flexible schedule</li>
             </ul>
-
+          <a target="_blank" href="https://wa.me/923446364513?text=Hi%20Sir,%20i%20want%20to%20buy%20this%20Standard%20plan">
             <button className="planButton">
               Choose Plan
             </button>
+          </a>
 
           </div>
 
@@ -134,9 +136,11 @@ const HadiyahFee = () => {
               <li>✓ Personal progress guidance</li>
             </ul>
 
+            <a target="_blank" href="https://wa.me/923446364513?text=Hi%20Sir,%20i%20want%20to%20buy%20this%20Premium%20plan">
             <button className="planButton">
               Choose Plan
             </button>
+          </a>
 
           </div>
 
