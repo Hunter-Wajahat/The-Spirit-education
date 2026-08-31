@@ -67,7 +67,7 @@ const QuranTajweed = () => {
 
         <div className="courseTopics">
           {quranTajweed.map(tajweed => (
-
+            <a target="_blank" href={`https://wa.me/923446364513?text=i'm%20intrested%20in%20learning%20${tajweed.courseTitle}`}>
 
             <div key={tajweed.indexNumber} className="courseTopic">
               <span>{tajweed.indexNumber}</span>
@@ -76,6 +76,7 @@ const QuranTajweed = () => {
                 {tajweed.shortSummery}
               </p>
             </div>
+            </a>
 
           ))}
         </div>

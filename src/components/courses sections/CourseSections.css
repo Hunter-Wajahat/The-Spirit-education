@@ -59,6 +59,10 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 18px;
+  text-decoration: none;
+}
+.courseTopics a{
+  text-decoration: none;
 }
 
 .courseTopic {
@@ -77,6 +81,7 @@
     transform 0.25s ease,
     box-shadow 0.25s ease,
     background-color 0.25s ease;
+
 }
 
 .courseTopic:hover {
@@ -149,6 +154,7 @@
   font-family: Georgia, "Times New Roman", serif;
   font-size: 20px;
   font-weight: 600;
+
 }
 
 .courseTopic p {

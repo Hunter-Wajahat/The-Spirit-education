@@ -67,6 +67,7 @@ const NamazKalma = () => {
 
         <div className="courseTopics">
           {namazAndkalma.map(namaz=>(
+            <a target="_blank" href={`https://wa.me/923446364513?text=i'm%20intrested%20in%20learning%20${namaz.courseTitle}`}>
 
             <div className="courseTopic">
             <span>{namaz.indexNumber}</span>
@@ -75,6 +76,7 @@ const NamazKalma = () => {
               {namaz.shortSummery}
             </p>
           </div>
+            </a>
           ))}
 
         </div>

@@ -67,7 +67,7 @@ const BasicQaida = () => {
 
         <div className="courseTopics">
         {Basic_qaida.map(qaida=>(
-
+          <a target="_blank" href={`https://wa.me/923446364513?text=i'm%20intrested%20in%20learning%20${qaida.courseTitle}`}>
           <div key={qaida.indexNumber} className="courseTopic">
             <span>{qaida.indexNumber}</span>
             <h3>{qaida.courseTitle}</h3>
@@ -75,6 +75,7 @@ const BasicQaida = () => {
               {qaida.shortSummery}
             </p>
           </div>
+          </a>
           ))}
         </div>
 

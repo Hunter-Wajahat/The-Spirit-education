@@ -57,6 +57,7 @@ const QuranTranslation = () => {
 
         <div className="courseTopics">
         {quranTranslation.map(quran=>(
+          <a target="_blank" href={`https://wa.me/923446364513?text=i'm%20intrested%20in%20learning%20${quran.courseTitle}`}>
 
           <div className="courseTopic">
             <span>{quran.indexNumber}</span>
@@ -65,6 +66,7 @@ const QuranTranslation = () => {
               {quran.shortSummery}
             </p>
           </div>
+          </a>
           ))}
 
         </div>
