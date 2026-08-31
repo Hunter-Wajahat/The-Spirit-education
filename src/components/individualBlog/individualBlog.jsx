@@ -1,40 +1,47 @@
 import React, {useState, useEffect} from "react";
 import "./SingleBlog.css";
 import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { storeBlogsById } from "../../Redux/features/public blog data/blogDataById";
 import axios from "axios";
+import Loader from "../loader/Loader";
 
 const SingleBlog = () => {
-    const [blogData, setblogData] = useState([])
     const { blogid } = useParams()
+    const Dispatch = useDispatch();
+    const theBlogData = useSelector((state)=> state.blogDataById.blogDataById
+)
     
     useEffect(() => {
         async function getBlogById() {
-            
             const url = `${import.meta.env.VITE_SERVER_URL}/api/single_blog`;
-            const payload = blogid;
-            const response = await axios.get(url, payload)
-            setblogData(response.data)
-            console.log(response.data)
+            const response = await axios.get(url,{
+                params: {
+                    blogId: blogid,
+                }
+            })
+            Dispatch(storeBlogsById(response.data))
+            
         }
         getBlogById()
     }, [blogid])
-    
 
+    if (!theBlogData[0]) {
+        return <main className="singleBlog"><Loader/></main>;
+    }
 
-    const date = new Date(blogData.date);
+    const date = new Date(theBlogData[0].date);
 
     const day = date.getDate();
     const month = date.getMonth() + 1; // Months start at 0
     const year = date.getFullYear();
-    console.log(`${day} ${month} ${year}`)
 
     return (
         <>
             
 
-
-                <main className="singleBlog">
+            {theBlogData.map(blogData => (  
+                <main key={blogData._id} className="singleBlog">
 
                     <div className="singleBlogContainer">
 
@@ -42,11 +49,11 @@ const SingleBlog = () => {
                         <header className="singleBlogHeader">
 
                             <span className="singleBlogCategory">
-                                {blogData.catagory}
+                                
                             </span>
 
                             <h1>
-                                {blogData.tittle}
+                               {blogData.tittle}
                             </h1>
 
                             <p className="singleBlogIntro">
@@ -86,11 +93,11 @@ const SingleBlog = () => {
                         <div className="singleBlogBottom">
 
                             <span>
-                                Category: <strong>General</strong>
+                                Category: <strong>{blogData.catagory}</strong>
                             </span>
 
                             <span>
-                                Written by <strong>Saqib Syed</strong>
+                                Written by <strong>{blogData.author}</strong>
                             </span>
 
                         </div>
@@ -98,6 +105,7 @@ const SingleBlog = () => {
                     </div>
 
                 </main>
+                ))}
 
         </>
     );
