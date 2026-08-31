@@ -15,7 +15,7 @@ const AdminDashboard = () => {
     catagory: '',
     body: '',
   })
-  const [fileName, setFileName] = useState("")
+  const [allBlogs, setallBlogs] = useState()
 
 
   useEffect(() => {
@@ -29,6 +29,13 @@ const AdminDashboard = () => {
 
     }
     getauth()
+
+    async function getAllBlogs() {
+      const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/api/blogs_to_author`, { withCredentials: true })
+      setallBlogs(response.data)
+
+    }
+    getAllBlogs()
   }, [])
 
   const handleChange = (event) => {
@@ -156,7 +163,7 @@ const AdminDashboard = () => {
 
             <div>
               <span>Total Blogs</span>
-              <strong>24</strong>
+              <strong>{allBlogs.length}</strong>
             </div>
           </div>
 
@@ -385,77 +392,23 @@ const AdminDashboard = () => {
               <span>Action</span>
             </div>
 
+            {allBlogs ? (
+              allBlogs.map((myBlog) => (
+                <div className="tableRow" key={myBlog._id}>
+                  <strong>{myBlog.tittle}</strong>
+                  <span>{myBlog.author || "Admin"}</span>
+                  <span className="categoryBadge">{myBlog.catagory}</span>
+                  <span>{myBlog.createdAt}</span>
 
-            <div className="tableRow">
-
-              <strong>
-                Understanding the Importance of Tajweed
-              </strong>
-
-              <span>Admin</span>
-
-              <span className="categoryBadge">
-                Tajweed
-              </span>
-
-              <span>20 Aug 2026</span>
-
-              <div className="rowActions">
-                <button>Edit</button>
-                <button className="deleteAction">
-                  Delete
-                </button>
-              </div>
-
-            </div>
-
-
-            <div className="tableRow">
-
-              <strong>
-                How to Build a Relationship with the Quran
-              </strong>
-
-              <span>Admin</span>
-
-              <span className="categoryBadge">
-                Quran
-              </span>
-
-              <span>17 Aug 2026</span>
-
-              <div className="rowActions">
-                <button>Edit</button>
-                <button className="deleteAction">
-                  Delete
-                </button>
-              </div>
-
-            </div>
-
-
-            <div className="tableRow">
-
-              <strong>
-                Benefits of Learning Quran Online
-              </strong>
-
-              <span>Admin</span>
-
-              <span className="categoryBadge">
-                Learning
-              </span>
-
-              <span>12 Aug 2026</span>
-
-              <div className="rowActions">
-                <button>Edit</button>
-                <button className="deleteAction">
-                  Delete
-                </button>
-              </div>
-
-            </div>
+                  <div className="rowActions">
+                    <button>Edit</button>
+                    <button className="deleteAction">Delete</button>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <div>Loading...</div>
+            )}
 
           </div>
 
