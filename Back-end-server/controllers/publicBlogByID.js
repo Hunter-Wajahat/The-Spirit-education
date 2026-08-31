@@ -4,7 +4,6 @@ async function getPublicblogById(req, res) {
         console.log(req.query)
         const {blogId} = req.query;
         const blogData = await Blog.findById(blogId)
-        console.log(blogData)
         res.json(blogData)
     } catch (err) {
         res.json({message: "there is an error while fetching blog:", error: err})
