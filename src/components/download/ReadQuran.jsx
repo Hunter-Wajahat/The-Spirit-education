@@ -12,7 +12,7 @@ const ReadQuran = () => {
     }));
 
   const quran = {
-    paraNum01: [
+    para01: [
     {
       pageAddress: "para01/1.jpg",
       key: 1
@@ -94,7 +94,7 @@ const ReadQuran = () => {
       key: 20
     }
   ],
-    paraNum02: [
+    para02: [
     {
       pageAddress: "para02/021.jpg",
       key: 1
@@ -168,7 +168,7 @@ const ReadQuran = () => {
       key: 18
     }
   ],
-    paraNum03: [
+    para03: [
     {
       pageAddress: "para03/039.jpg",
       key: 1
@@ -242,33 +242,33 @@ const ReadQuran = () => {
       key: 18
     }
   ],
-    paraNum04: createParaPages(4, 57),
-    paraNum05: createParaPages(5, 75),
-    paraNum06: createParaPages(6, 93),
-    paraNum07: createParaPages(7, 111),
-    paraNum08: createParaPages(8, 129),
-    paraNum09: createParaPages(9, 147),
-    paraNum10: createParaPages(10, 165),
-    paraNum11: createParaPages(11, 183),
-    paraNum12: createParaPages(12, 201),
-    paraNum13: createParaPages(13, 219),
-    paraNum14: createParaPages(14, 237),
-    paraNum15: createParaPages(15, 255),
-    paraNum16: createParaPages(16, 273),
-    paraNum17: createParaPages(17, 291),
-    paraNum18: createParaPages(18, 309),
-    paraNum19: createParaPages(19, 327),
-    paraNum20: createParaPages(20, 345),
-    paraNum21: createParaPages(21, 363),
-    paraNum22: createParaPages(22, 381),
-    paraNum23: createParaPages(23, 399),
-    paraNum24: createParaPages(24, 417),
-    paraNum25: createParaPages(25, 435),
-    paraNum26: createParaPages(26, 453),
-    paraNum27: createParaPages(27, 471),
-    paraNum28: createParaPages(28, 489, 20),
-    paraNum29: createParaPages(29, 507, 20),
-    paraNum30: createParaPages(30, 525, 21)
+    para04: createParaPages(4, 57),
+    para05: createParaPages(5, 75),
+    para06: createParaPages(6, 93),
+    para07: createParaPages(7, 111),
+    para08: createParaPages(8, 129),
+    para09: createParaPages(9, 147),
+    para10: createParaPages(10, 165),
+    para11: createParaPages(11, 183),
+    para12: createParaPages(12, 201),
+    para13: createParaPages(13, 219),
+    para14: createParaPages(14, 237),
+    para15: createParaPages(15, 255),
+    para16: createParaPages(16, 273),
+    para17: createParaPages(17, 291),
+    para18: createParaPages(18, 309),
+    para19: createParaPages(19, 327),
+    para20: createParaPages(20, 345),
+    para21: createParaPages(21, 363),
+    para22: createParaPages(22, 381),
+    para23: createParaPages(23, 399),
+    para24: createParaPages(24, 417),
+    para25: createParaPages(25, 435),
+    para26: createParaPages(26, 453),
+    para27: createParaPages(27, 471),
+    para28: createParaPages(28, 489, 20),
+    para29: createParaPages(29, 507, 20),
+    para30: createParaPages(30, 525, 21)
 }
   const pages = quran[para] || [];
 
