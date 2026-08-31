@@ -38,13 +38,6 @@ const Blog = () => {
           {blogs.map((blog) =>(
           <article key={blog._id} className="blogCard">
 
-            {/* <div className="blogImage">
-              <img
-                src="https://images.unsplash.com/photo-1609599006353-e629aaabfeae?auto=format&fit=crop&w=900&q=80"
-                alt="Quran"
-              />
-            </div> */}
-
             <div className="blogContent">
 
               <div className="blogMeta">
