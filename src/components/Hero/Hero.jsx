@@ -24,10 +24,12 @@ const Hero = () => {
         </p>
 
         <div className="heroButtons">
+          <a href="/courses">
           <button className="heroPrimaryBtn">
             Explore Courses
             <span>→</span>
           </button>
+          </a>
 
           <button className="heroSecondaryBtn">
             Learn More
