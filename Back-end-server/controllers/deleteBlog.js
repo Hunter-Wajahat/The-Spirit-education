@@ -1,0 +1,3 @@
+function DeleteMyBlog(req, res) {
+    
+}
