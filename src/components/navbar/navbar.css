@@ -1,7 +1,6 @@
 .navbarContainer {
   width: 100%;
-  /* max-width: 1400px; */
-  /* height: 82px; */
+  height: 82px;
 
   margin: 0 auto;
   padding: 0 35px;
@@ -11,16 +10,16 @@
   justify-content: space-between;
 
   background: #ffffff;
-  position:fixed;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
   z-index: 999;
+
   border-bottom: 1px solid #2d7d42;
 }
-.activeItem.active{
-  color: red;
-}
-.navbarContainer ul a{
-  text-decoration: none;
-}
+
 
 /* =========================
    Logo
@@ -46,10 +45,10 @@
 
 
 /* =========================
-   Navigation
+   Desktop Navigation
 ========================= */
 
-.navbarContainer ul {
+.desktopNav {
   margin: 0;
   padding: 0;
 
@@ -57,7 +56,16 @@
 
   display: flex;
   align-items: center;
+
   gap: 8px;
+}
+
+.navbarContainer ul a {
+  text-decoration: none;
+}
+
+.activeItem {
+  color: #2d7d42;
 }
 
 
@@ -104,81 +112,198 @@
 .navbarContainer li:hover {
   color: #2d7d42;
 }
-.activeItem{
-    color: #2d7d42;
-}
-
 
 .navbarContainer li:hover::after {
   transform: scaleX(1);
 }
 
-.signInBtn {
-  border: 1px solid #2d7d42;
 
-  padding: 10px 22px;
+/* =========================
+   Mobile Menu Button
+========================= */
 
-  border-radius: 6px;
+.menuButton {
+  display: none;
 
-  background: #2d7d42;
-  color: #ffffff;
+  width: 42px;
+  height: 42px;
 
-  font-size: 14px;
-  font-weight: 600;
+  padding: 8px;
+
+  border: none;
+  background: transparent;
 
   cursor: pointer;
 
-  transition: all 0.25s ease;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  gap: 5px;
 }
 
-.signInBtn:hover {
-  background: #ea8f24;
-  border-color: #ea8f24;
+.menuButton span {
+  display: block;
 
-  transform: translateY(-2px);
+  width: 25px;
+  height: 2px;
+
+  background: #2d7d42;
+
+  transition: all 0.3s ease;
 }
+
+
+/* =========================
+   Hamburger Animation
+========================= */
+
+.menuButton.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.menuButton.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.menuButton.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+
+/* =========================
+   Mobile Navigation
+========================= */
+
+.mobileNav {
+  display: none;
+}
+
 
 /* =========================
    Responsive
 ========================= */
 
-@media (max-width: 1100px) {
-
-  .navbarContainer {
-    padding: 0 22px;
-  }
-
-  .logoInNav img {
-    width: 130px;
-  }
-
-  .navbarContainer ul {
-    gap: 2px;
-  }
-
-  .navbarContainer li {
-    padding: 9px 8px;
-    font-size: 13px;
-  }
-
-  .navbarContainer li::after {
-    left: 8px;
-    right: 8px;
-  }
-}
-
-
 @media (max-width: 850px) {
 
   .navbarContainer {
     height: 72px;
+
+    padding: 0 20px;
   }
 
   .logoInNav img {
-    width: 120px;
+    width: 75px;
   }
 
-  .navbarContainer ul {
+  /* Hide desktop nav */
+
+  .desktopNav {
     display: none;
+  }
+
+  /* Show hamburger */
+
+  .menuButton {
+    display: flex;
+  }
+
+  /* Mobile dropdown */
+
+  .mobileNav {
+    position: absolute;
+
+    top: 72px;
+    left: 0;
+
+    width: 100%;
+
+    padding: 15px 20px 20px;
+
+    display: flex;
+    flex-direction: column;
+
+    background: #ffffff;
+
+    border-bottom: 1px solid #2d7d42;
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+
+    transform: translateY(-20px);
+
+    opacity: 0;
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition:
+      transform 0.3s ease,
+      opacity 0.3s ease,
+      visibility 0.3s ease;
+  }
+
+  .mobileNav.show {
+    transform: translateY(0);
+
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+  }
+
+  .mobileNav a {
+    width: 100%;
+
+    padding: 14px 10px;
+
+    color: #24382a;
+
+    text-decoration: none;
+
+    font-size: 15px;
+    font-weight: 500;
+
+    border-bottom: 1px solid #eeeeee;
+
+    transition:
+      color 0.2s ease,
+      padding-left 0.2s ease;
+  }
+
+  .mobileNav a:last-child {
+    border-bottom: none;
+  }
+
+  .mobileNav a:hover {
+    color: #2d7d42;
+
+    padding-left: 15px;
+  }
+}
+
+
+/* =========================
+   Small Phones
+========================= */
+
+@media (max-width: 450px) {
+
+  .navbarContainer {
+    padding: 0 15px;
+  }
+
+  .logoInNav img {
+    width: 70px;
+  }
+
+  .menuButton {
+    width: 40px;
+    height: 40px;
+  }
+
+  .mobileNav {
+    padding-left: 15px;
+    padding-right: 15px;
   }
 }
