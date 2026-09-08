@@ -10,6 +10,7 @@ const giveAllBlogsToAuthor = require('../controllers/giveAllBlogs');
 const path = require('path');
 const archiver = require('archiver');
 const downloadFolder = require('../controllers/downloadFolder');
+const DeleteMyBlog = require('../controllers/deleteBlog');
 
 const router = express.Router();
 
@@ -22,6 +23,9 @@ router.get('/my_dashboard',authMiddleware,  DashboardAuth)
 router.get('/public_blogs', publishBlogs)
 router.get('/single_blog', getPublicblogById)
 router.get('/blogs_to_author',authMiddleware, giveAllBlogsToAuthor)
+
+//Delete request(s)
+router.delete('/delete_blog/:blogid',DeleteMyBlog)
 
 //Allow user to Download Files
 router.get('/download_folder', downloadFolder)
