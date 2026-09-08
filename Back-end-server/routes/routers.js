@@ -6,6 +6,10 @@ const postBlog = require('../controllers/postBlog');
 const upload = require('../middlewares/upload');
 const publishBlogs = require('../controllers/publishBlogs');
 const getPublicblogById = require('../controllers/publicBlogByID');
+const giveAllBlogsToAuthor = require('../controllers/giveAllBlogs');
+const path = require('path');
+const archiver = require('archiver');
+const downloadFolder = require('../controllers/downloadFolder');
 
 const router = express.Router();
 
@@ -17,4 +21,10 @@ router.post('/post_blog', upload.single("blogimg"),authMiddleware, postBlog)
 router.get('/my_dashboard',authMiddleware,  DashboardAuth)
 router.get('/public_blogs', publishBlogs)
 router.get('/single_blog', getPublicblogById)
+router.get('/blogs_to_author',authMiddleware, giveAllBlogsToAuthor)
+
+//Allow user to Download Files
+router.get('/download_folder', downloadFolder)
+
+
 module.exports = router;

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect } from 'react'
 import './App.css'
 import Navbar from './components/navbar/Navbar'
 import Hero from './components/Hero/Hero'
@@ -16,8 +16,26 @@ import Platforms from './components/platform/Platform'
 import Footer from './components/foot/Footer'
 import SignIn from './components/sign in/signin'
 import AdminDashboard from './components/dashboard/AdminDashboard'
+import axios from 'axios'
+import { useSelector, useDispatch } from 'react-redux'
+import { storeBlogs } from './Redux/features/public blog data/publicBlogData'
+import SingleBlog from './components/individualBlog/individualBlog'
+import ReadQuran from './components/download/ReadQuran'
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    async function getBlogData() {
+      
+      const url = `${import.meta.env.VITE_SERVER_URL}/api/public_blogs`;
+      const response = await axios.get(url);
+      dispatch(storeBlogs(response.data))
+      console.log(response.data)
+    }
+    getBlogData()
+  },[])
+  
   const router = createBrowserRouter([
     {
       path: "/blog",
@@ -106,6 +124,18 @@ function App() {
       path: "/signin",
       element: <>
          <SignIn/>
+      </>
+    },
+    {
+      path: "/blog/:blogid",
+      element: <>
+         <SingleBlog/>
+      </>
+    },
+    {
+      path: "/read/:para",
+      element: <>
+         <ReadQuran/>
       </>
     },
   ])
