@@ -755,11 +755,17 @@
 
   background: #eef5ef;
 
-  color: #2d7d42;
+  
 
-  font-size: 8px;
+  font-size: 9px;
 
   font-weight: 700;
+}
+.publishedColor{
+  color: #2d7d42;
+}
+.unpublishedColor{
+  color: #ea8f24;
 }
 
 

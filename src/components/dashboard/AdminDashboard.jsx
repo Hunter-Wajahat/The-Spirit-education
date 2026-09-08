@@ -61,6 +61,14 @@ const AdminDashboard = () => {
     console.log("posted?: ", response.data)
   };
 
+  //in this function i hit the request at the deleting endpoint
+  async function deleteBlog(blogID) {
+    const url = `${import.meta.env.VITE_SERVER_URL}/api/delete_blog/${blogID}`;
+
+    const response = await axios.delete(url, { withCredentials: true })
+    console.log(response.data)
+  }
+
   if (!loading) {
     return <h1><Loader /></h1>
   }
@@ -397,12 +405,18 @@ const AdminDashboard = () => {
                 <div className="tableRow" key={myBlog._id}>
                   <strong>{myBlog.tittle}</strong>
                   <span>{myBlog.author || "Admin"}</span>
-                  <span className="categoryBadge">{myBlog.catagory}</span>
+                  <span className={myBlog.publish ? "publishedColor categoryBadge" : "unpublishedColor categoryBadge"}  >{myBlog.catagory}</span>
                   <span>{myBlog.createdAt}</span>
 
                   <div className="rowActions">
-                    <button>Edit</button>
-                    <button className="deleteAction">Delete</button>
+                    <button onClick={()=> setFormData({
+                      blogimg: '',
+                      title: myBlog.tittle,
+                      author: myBlog.author,
+                      catagory: myBlog.catagory,
+                      body: myBlog.body,
+                    })}>Edit</button>
+                    <button className="deleteAction" onClick={() => deleteBlog(myBlog._id)}>Delete</button>
                   </div>
                 </div>
               ))
