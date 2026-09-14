@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const app = express()
-const port = 3000
+const port = process.env.PORT;
 const connectDB = require('./models/db');
 const cookieParser = require('cookie-parser');
 const cors = require('cors')
@@ -12,7 +12,7 @@ const path = require("path");
 connectDB()
 
 app.use(cors({
-  origin: process.env.frontend_server, // My frontend
+  origin: "*", // My frontend
   credentials: true               // allow sending cookies
 }));
 
@@ -28,6 +28,6 @@ app.get('/', (req, res) => {
   res.json('we are listening...')
 })
 
-app.listen(port, () => {
+app.listen(port || 3000, () => {
   console.log(`app listening on port ${port}`)
 })
