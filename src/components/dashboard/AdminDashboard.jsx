@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import "./AdminDashboard.css";
 import axios from "axios";
 import Loader from "../loader/Loader";
-import { useForm } from "react-hook-form"
 
 const AdminDashboard = () => {
   const [authorData, setauthorData] = useState()
   const [loading, setloading] = useState()
   const [formLoading, setformLoading] = useState()
   const [formData, setFormData] = useState({
+    _id: '',
     blogimg: '',
     title: '',
     author: '',
@@ -49,16 +49,22 @@ const AdminDashboard = () => {
 
   // Handle form submission
   const handleSubmit = async (event) => {
-    setformLoading(true)
     event.preventDefault();
+    setformLoading(true)
 
-    console.log('Submitted Data:', formData);
+    const publish = event.nativeEvent.submitter.value === "publish";
+    const responseData = { ...formData, publish };
+
+    console.log('Submitted Data:', responseData);
     const url = `${import.meta.env.VITE_SERVER_URL}/api/post_blog`
-    const response = await axios.post(url, formData, {
+    const response = await axios.post(url, responseData, {
       withCredentials: true
     })
     setformLoading(false)
     console.log("posted?: ", response.data)
+
+    const blogsResponse = await axios.get(`${import.meta.env.VITE_SERVER_URL}/api/blogs_to_author`, { withCredentials: true })
+    setallBlogs(blogsResponse.data)
   };
 
   //in this function i hit the request at the deleting endpoint
@@ -171,7 +177,7 @@ const AdminDashboard = () => {
 
             <div>
               <span>Total Blogs</span>
-              <strong>{allBlogs.length}</strong>
+              {/* <strong>{allBlogs.length}</strong> */}
             </div>
           </div>
 
@@ -216,7 +222,7 @@ const AdminDashboard = () => {
           <form className="blogForm" onSubmit={handleSubmit}>
             <button
               type="submit"
-              onClick={() => formData.publish = false}
+              value="draft"
               className="draftButton"
               encType="multipart/form-data">
               Save Draft
@@ -256,6 +262,7 @@ const AdminDashboard = () => {
 
               <input
                 onChange={handleChange}
+                value={formData.title}
                 name="title"
                 id="title"
                 type="text"
@@ -275,6 +282,7 @@ const AdminDashboard = () => {
 
               <input
                 onChange={handleChange}
+                value={formData.author}
                 name="author"
                 id="author"
                 type="text"
@@ -291,7 +299,7 @@ const AdminDashboard = () => {
                 Category
               </label>
 
-              <select onChange={handleChange} name="catagory" id="category">
+              <select onChange={handleChange} value={formData.catagory} name="catagory" id="category">
 
                 <option value="">
                   Select category
@@ -339,6 +347,7 @@ const AdminDashboard = () => {
 
               <textarea
                 onChange={handleChange}
+                value={formData.body}
                 name="body"
                 id="body"
                 rows="14"
@@ -359,7 +368,7 @@ const AdminDashboard = () => {
               </button> */}
 
               <button
-                onClick={() => formData.publish = true}
+                value="publish"
                 type="submit"
                 className="publishButton"
               >
@@ -410,6 +419,7 @@ const AdminDashboard = () => {
 
                   <div className="rowActions">
                     <button onClick={()=> setFormData({
+                      _id: myBlog._id,
                       blogimg: '',
                       title: myBlog.tittle,
                       author: myBlog.author,
