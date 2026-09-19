@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import logo from '../../assets/Spirit Logo.png'
 import './navbar.css'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 
 const Navbar = () => {
 
     const [menuOpen, setMenuOpen] = useState(false)
+    const navigate = useNavigate()
 
     return (
         <div className='navbarContainer'>
@@ -35,6 +36,22 @@ const Navbar = () => {
                 <NavLink className="activeItem" to="/download">
                     <li>Download</li>
                 </NavLink>
+                <li>
+                                <select
+                                        name="read"
+                                        id="read"
+                                        onClick={(event) => {
+                                                if (event.target.value) {
+                                                        navigate(event.target.value)
+                                                }
+                                        }}
+                                >
+                                <option value="">Read</option>
+                                <option value="Quran">Quran</option>
+                                <option value="/read/qaida">Qaida</option>
+                                <option value="/kalma">Dua & Kalima</option>
+                </select>
+                </li>
 
                 <NavLink className="activeItem" to="/hadiyah-fee">
                     <li>Hadiyah/Fee</li>
@@ -43,6 +60,8 @@ const Navbar = () => {
                 <NavLink className="activeItem" to="/platform">
                     <li>Platform</li>
                 </NavLink>
+
+                
             </ul>
 
             {/* Mobile Menu Button */}

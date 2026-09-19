@@ -20,6 +20,14 @@
   border-bottom: 1px solid #2d7d42;
 }
 
+#read{
+  font-size: medium;
+  padding: 7px 5px 7px 5px;
+  border: none;
+  width: 70px;
+  font-weight: 500;
+
+}
 
 /* =========================
    Logo
