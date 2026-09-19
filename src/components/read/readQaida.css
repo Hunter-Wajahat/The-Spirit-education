@@ -1,0 +1,211 @@
+.qaida_container {
+  width: 100%;
+  /* min-height: calc(100vh - 82px); */
+  height: 120vh;
+
+  padding: 35px 25px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* gap: 35px; */
+
+  background: #f3f5f1;
+
+  position: relative;
+}
+
+
+/* =========================
+   Canvas / Page
+========================= */
+
+.qaida_container canvas {
+  display: block;
+
+  /* width: min(72vw, 760px); */
+  height: 65%;
+
+  background: #ffffff;
+
+  border: 1px solid #e2e6e2;
+
+  box-shadow:
+    0 8px 25px rgba(36, 65, 44, 0.12);
+
+  border-radius: 3px;
+}
+
+
+/* =========================
+   Navigation Buttons
+========================= */
+
+.qaida_container button {
+  width: 50px;
+  height: 500px;
+
+  flex-shrink: 0;
+
+  border: 1px solid #d7dfd8;
+
+  /* border-radius: 50% 0px 50% 50% ; */
+
+  background: #ffffff;
+
+  color: #2d7d42;
+
+  font-size: 0;
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 0 4px 14px rgba(35, 70, 43, 0.08);
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+.leftButton{
+    border-radius: 50% 0px 0px 50%;
+}
+.rightButton{
+    border-radius: 0px 50% 50% 0px;
+}
+
+
+/* Previous arrow */
+
+.qaida_container button:first-child::before {
+  content: "←";
+
+  font-size: 22px;
+}
+
+
+/* Next arrow */
+
+.qaida_container button:last-child::before {
+  content: "→";
+
+  font-size: 22px;
+}
+
+
+.qaida_container button:hover {
+  background: #2d7d42;
+
+  border-color: #2d7d42;
+
+  color: #ffffff;
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 7px 18px rgba(45, 125, 66, 0.2);
+}
+
+
+.qaida_container button:active {
+  transform: translateY(0);
+}
+
+
+/* =========================
+   Tablet
+========================= */
+
+@media (max-width: 900px) {
+
+  .qaida_container {
+    gap: 20px;
+
+    padding: 30px 18px;
+  }
+
+  .qaida_container canvas {
+    width: min(78vw, 650px);
+  }
+
+  .qaida_container button {
+    width: 46px;
+    height: 46px;
+  }
+
+  .qaida_container button:first-child::before,
+  .qaida_container button:last-child::before {
+    font-size: 19px;
+  }
+}
+
+
+/* =========================
+   Mobile
+========================= */
+
+@media (max-width: 600px) {
+
+  .qaida_container {
+    min-height: calc(100vh - 72px);
+
+    padding: 20px 12px;
+
+    gap: 8px;
+  }
+
+
+  .qaida_container canvas {
+    width: calc(100vw - 90px);
+
+    max-width: none;
+
+    border-radius: 2px;
+
+    box-shadow:
+      0 5px 18px rgba(36, 65, 44, 0.1);
+  }
+
+
+  .qaida_container button {
+    width: 38px;
+    height: 38px;
+
+    box-shadow: none;
+  }
+
+
+  .qaida_container button:first-child::before,
+  .qaida_container button:last-child::before {
+    font-size: 17px;
+  }
+}
+
+/* button enable/desable */
+.qaida_container button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+
+  background: #ffffff;
+  color: #8b958e;
+
+  border-color: #e1e5e1;
+
+  box-shadow: none;
+
+  transform: none;
+}
+
+.qaida_container button:disabled:hover {
+  background: #ffffff;
+  color: #8b958e;
+
+  border-color: #e1e5e1;
+
+  transform: none;
+}
