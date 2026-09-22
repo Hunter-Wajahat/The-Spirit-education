@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
 import './readQaida.css'
-import axios from 'axios'
 import * as pdfjsLib from 'pdfjs-dist';
 import getPdfImages from '../../utils/getPdfPages';
 
@@ -11,13 +10,12 @@ pdfjsLib.GlobalWorkerOptions.workerSrc =
   ).toString();
 
 const ReadQaida = () => {
-  const [qaidapage, setqaidapage] = useState()
 
   const canvasRef = useRef(null)
   const [pageNumber, setpageNumber] = useState(1)
 
   useEffect(() => {
-    const docUrl = `${import.meta.env.VITE_SERVER_URL}/api/read_qaida`;
+    const docUrl = `${import.meta.env.VITE_SERVER_URL}/api/read/qaida`;
     getPdfImages(docUrl, canvasRef, pageNumber)
   }, [pageNumber])
 
