@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Blog.css";
 import { useSelector } from "react-redux";
 import { Link } from 'react-router-dom'
 
 
 const Blog = () => {
+  useEffect(() => {
+    
+  }, [])
+  
   const blogs = useSelector((state) => state.blogData.blogData)
   console.log("the blog data coming from redu: ", blogs)
   return (
