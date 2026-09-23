@@ -1,13 +1,22 @@
+import axios from "axios";
+
 async function getPdfImages(docUrl, canvasRef, pageNumber) {
     // const docUrl = `${import.meta.env.VITE_SERVER_URL}/api/read_qaida`;
+      const response = await axios.get(docUrl, {
+        params: {
+          pageNum: pageNumber
+        }
+      })
+      console.log(response.data)
+      const page = response.data;
 
-    const pdfFile = pdfjsLib.getDocument({
-      url:docUrl,
-    });
+    // const pdfFile = pdfjsLib.getDocument({
+    //   url:docUrl,
+    // });
 
-    const pdf = await pdfFile.promise;
-    console.log("Total pages:", pdf.numPages);
-    const page = await pdf.getPage(pageNumber);
+    // const pdf = await pdfFile.promise;
+    // console.log("Total pages:", pdf.numPages);
+    // const page = await pdf.getPage(pageNumber);
 
     const scale = 1.5;
     const viewport = page.getViewport({scale})
