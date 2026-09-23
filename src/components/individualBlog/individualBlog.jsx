@@ -1,46 +1,60 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import "./SingleBlog.css";
 import { useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { storeBlogsById } from "../../Redux/features/public blog data/blogDataById";
+// import { useDispatch, useSelector } from "react-redux";
+// import { storeBlogsById } from "../../Redux/features/public blog data/blogDataById";
 import axios from "axios";
 import Loader from "../loader/Loader";
 
 const SingleBlog = () => {
     const { blogid } = useParams()
-    const Dispatch = useDispatch();
-    const theBlogData = useSelector((state)=> state.blogDataById.blogDataById
-)
-    
+    const [indivBlog, setindivBlog] = useState([])
+    const [day, setday] = useState()
+    const [month, setmonth] = useState()
+    const [year, setyear] = useState()
+    const [loading, setloading] = useState()
+
     useEffect(() => {
         async function getBlogById() {
+            setloading(true)
             const url = `${import.meta.env.VITE_SERVER_URL}/api/single_blog`;
-            const response = await axios.get(url,{
+            const response = await axios.get(url, {
                 params: {
                     blogId: blogid,
                 }
             })
-            Dispatch(storeBlogsById(response.data))
-            
+            setindivBlog([response.data])
+            setloading(false)
+
+            const date = new Date(response.data.date);
+
+            setday(date.getDate())
+            setmonth(date.getMonth() + 1) // Months start at 0
+            setyear(date.getFullYear())
+
         }
         getBlogById()
+
     }, [blogid])
 
-    if (!theBlogData[0]) {
-        return <main className="singleBlog"><Loader/></main>;
+
+
+
+    if (loading) {
+        return <main className="singleBlog"><Loader /></main>;
     }
 
-    const date = new Date(theBlogData[0].date);
 
-    const day = date.getDate();
-    const month = date.getMonth() + 1; // Months start at 0
-    const year = date.getFullYear();
+
+
+
+
 
     return (
         <>
-            
 
-            {theBlogData.map(blogData => (  
+
+            {indivBlog.map(blogData => (
                 <main key={blogData._id} className="singleBlog">
 
                     <div className="singleBlogContainer">
@@ -49,11 +63,11 @@ const SingleBlog = () => {
                         <header className="singleBlogHeader">
 
                             <span className="singleBlogCategory">
-                                
+
                             </span>
 
                             <h1>
-                               {blogData.tittle}
+                                {blogData.tittle}
                             </h1>
 
                             <p className="singleBlogIntro">
@@ -105,7 +119,7 @@ const SingleBlog = () => {
                     </div>
 
                 </main>
-                ))}
+            ))}
 
         </>
     );
