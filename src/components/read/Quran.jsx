@@ -7,11 +7,11 @@ const Quran = () => {
   const canvasRef = useRef(null)
   const [pageNumber, setpageNumber] = useState(1)
 
+
+
   useEffect( () => {
     const docUrl = `${import.meta.env.VITE_SERVER_URL}/api/read/quran`;
-
     getPdfImages(docUrl, canvasRef, pageNumber)
-    console.log(pageNumber)
   }, [pageNumber])
 
   const numbersOfPages = Array.from({ length: 1048 }, (_, index) => index + 1)
