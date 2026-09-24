@@ -47,7 +47,7 @@ const Navbar = () => {
                                         }}
                                 >
                                 <option value="">Read</option>
-                                <option value="Quran">Quran</option>
+                                <option value="/read/quran">Quran</option>
                                 <option value="/read/qaida">Qaida</option>
                                 <option value="/kalma">Dua & Kalima</option>
                 </select>
