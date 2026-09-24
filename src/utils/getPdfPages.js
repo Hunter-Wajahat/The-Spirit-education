@@ -1,38 +1,40 @@
 import axios from "axios";
 
 async function getPdfImages(docUrl, canvasRef, pageNumber) {
-    // const docUrl = `${import.meta.env.VITE_SERVER_URL}/api/read_qaida`;
-      const response = await axios.get(docUrl, {
-        params: {
-          pageNum: pageNumber
-        }
-      })
-      console.log(response.data)
-      const page = response.data;
+  // const docUrl = `${import.meta.env.VITE_SERVER_URL}/api/read_qaida`;
+  const response = await axios.get(docUrl, {
+    params: {
+      pageNum: pageNumber
+    },
+     responseType: 'arraybuffer'
+  })
 
-    // const pdfFile = pdfjsLib.getDocument({
-    //   url:docUrl,
-    // });
+  // const pdfFile = pdfjsLib.getDocument({
+  //   url:docUrl,
+  // });
 
-    // const pdf = await pdfFile.promise;
-    // console.log("Total pages:", pdf.numPages);
-    // const page = await pdf.getPage(pageNumber);
+  // const pdf = await pdfFile.promise;
+  // console.log("Total pages:", pdf.numPages);
+  // const page = await pdf.getPage(pageNumber);
+  const pdfBytes = await response.data;
 
-    const scale = 1.5;
-    const viewport = page.getViewport({scale})
+  const pdf = await pdfjsLib.getDocument({data:pdfBytes}).promise;
+  const page = await pdf.getPage(1);
 
-    const canvas = canvasRef.current;
-    const context = canvas.getContext("2d")
+  const viewport = page.getViewport({ scale: 1.5 });
+
+  const canvas = canvasRef.current;
+  const context = canvas.getContext("2d")
 
 
-    canvas.width = viewport.width;
-    canvas.height = viewport.height;
+  canvas.width = viewport.width;
+  canvas.height = viewport.height;
 
- await page.render({
-      canvasContext: context,
-      viewport: viewport
-    }).promise;
+  await page.render({
+    canvasContext: context,
+    viewport: viewport
+  }).promise;
 
-  }
+}
 
- export default getPdfImages;
+export default getPdfImages;
