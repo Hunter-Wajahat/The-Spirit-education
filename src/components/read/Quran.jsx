@@ -1,60 +1,50 @@
 import React, { useRef, useState, useEffect } from 'react';
 import './Quran.css';
+import axios from 'axios';
 import getPdfImages from '../../utils/getPdfPages';
+import PaginationBasic from '../pagination/Pagination';
+
 
 const Quran = () => {
 
   const canvasRef = useRef(null)
   const [pageNumber, setpageNumber] = useState(1)
+  const [chapter, setchapter] = useState(1)
+  const [amountOfpages, setamountOfpages] = useState(null)
+  const [isImageLoaded, setisImageLoaded] = useState(false)
 
 
 
-  useEffect( () => {
-    const docUrl = `${import.meta.env.VITE_SERVER_URL}/api/read/quran`;
-    getPdfImages(docUrl, canvasRef, pageNumber)
-  }, [pageNumber])
+  useEffect(() => {
+    async function getLength() {
+      const url =  `${import.meta.env.VITE_SERVER_URL}/api/quran/para${chapter}`;
+      const response = await axios.get(url)
+      setamountOfpages(response.data.filesAmount)
+      setpageNumber(1)
+
+      setisImageLoaded(true)
+    }
+    getLength()
+  }, [chapter])
 
   const numbersOfPages = Array.from({ length: 1048 }, (_, index) => index + 1)
+  const numbersOfchapters = Array.from({ length: 30 }, (_, index) => index + 1)
 
 
   return (
-    <div className="quran_container">
+    <div className="quran_container gap-4">
 
-      <div className="quran_controls">
+      <select onClick={(e)=> setchapter(e.target.value)} className='border border-blue-600 m-[20px] w-[500px] h-[50px]' name="chapters" id="chapters" aria-placeholder='Chapters'>
+        {numbersOfchapters.map(chapterNumber=> (
 
-        <button
-          onClick={() => setpageNumber(pre => pre - 1)}
-          disabled={pageNumber === 1}
-          className="quran_nav_btn">
-          <span>←</span>
-          <p>Previous</p>
-        </button>
-
-        <div className="quran_page_selector">
-          <label htmlFor="quranPage">Page</label>
-
-          <select onClick={(e) => setpageNumber(parseInt(e.currentTarget.value))} id="quranPage" defaultValue={pageNumber}>
-            {numbersOfPages.map((page) => (
-              <option key={page} value={page}>{page}</option>
-            ))}
-
-          </select>
-
-          <span>of 1048</span>
-        </div>
-
-        <button
-          onClick={() => setpageNumber(pre => pre + 1)}
-          disabled={pageNumber === 31}
-          className="quran_nav_btn">
-          <p>Next</p>
-          <span>→</span>
-        </button>
-
+        <option value={chapterNumber} key={chapterNumber}>Part/Chapter {chapterNumber}</option>
+        ))}
+      </select>
+      <div className="quran_page ">
+        <img className={`h-[85dvh] transition-opacity duration-700 ease-in-out opacity-100`} src={`${import.meta.env.VITE_SERVER_URL}/quran/para${chapter}/${pageNumber}.jpg`} alt="Quran page" />
       </div>
-
-      <div className="quran_page">
-        <canvas ref={canvasRef} />
+      <div>
+        <PaginationBasic pageAmount={amountOfpages} updatePage={setpageNumber} pagenum={pageNumber} setloaded={setisImageLoaded} />
       </div>
 
     </div>
