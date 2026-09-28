@@ -21,26 +21,27 @@ import { useSelector, useDispatch } from 'react-redux'
 import { storeBlogs } from './Redux/features/public blog data/publicBlogData'
 import SingleBlog from './components/individualBlog/individualBlog'
 import ReadQuran from './components/download/ReadQuran'
+import ReadQaida from './components/read/readQaida'
+import Quran from './components/read/Quran'
 
 function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
     async function getBlogData() {
-      
       const url = `${import.meta.env.VITE_SERVER_URL}/api/public_blogs`;
       const response = await axios.get(url);
       dispatch(storeBlogs(response.data))
       console.log(response.data)
     }
     getBlogData()
-  },[])
-  
+  }, [])
+
   const router = createBrowserRouter([
     {
       path: "/blog",
       element: <>
-        <Navbar/>
+        <Navbar />
         <Blog />
       </>
     },
@@ -56,93 +57,109 @@ function App() {
       path: "/courses",
       element: <>
         <Navbar />
-        <Courses/>
-        <QuranTajweed/>
+        <Courses />
+        <QuranTajweed />
       </>
     },
     {
       path: "/tajweed",
       element: <>
         <Navbar />
-        <Courses/>
-        <QuranTajweed/>
+        <Courses />
+        <QuranTajweed />
       </>
     },
     {
       path: "/translation",
       element: <>
         <Navbar />
-        <Courses/>
-        <QuranTranslation/>
+        <Courses />
+        <QuranTranslation />
       </>
     },
     {
       path: "/kalma",
       element: <>
         <Navbar />
-        <Courses/>
-        <NamazKalma/>
+        <Courses />
+        <NamazKalma />
       </>
     },
     {
       path: "/qaida",
       element: <>
         <Navbar />
-        <Courses/>
-        <BasicQaida/>
+        <Courses />
+        <BasicQaida />
       </>
     },
     {
       path: "/download",
       element: <>
         <Navbar />
-         <Download/>
+        <Download />
       </>
     },
     {
       path: "/hadiyah-fee",
       element: <>
         <Navbar />
-         <HadiyahFee/>
+        <HadiyahFee />
       </>
     },
     {
       path: "/platform",
       element: <>
         <Navbar />
-         <Platforms/>
+        <Platforms />
       </>
     },
     {
       path: "/my_dashboard",
       element: <>
         {/* <Navbar /> */}
-         <AdminDashboard/>
+        <AdminDashboard />
       </>
     },
     {
       path: "/signin",
       element: <>
-         <SignIn/>
+        <SignIn />
       </>
     },
     {
       path: "/blog/:blogid",
       element: <>
-         <SingleBlog/>
+        <SingleBlog />
+        <Navbar/>
       </>
     },
     {
       path: "/read/:para",
       element: <>
-         <ReadQuran/>
+        <ReadQuran />
+      </>
+    },
+
+    {
+      path: "/read/qaida",
+      element: <>
+        <Navbar />
+        <ReadQaida />
+      </>
+    },
+    {
+      path: "/read/quran",
+      element: <>
+        <Navbar />
+        <Quran />
       </>
     },
   ])
   return (
     <>
       <RouterProvider router={router} />
-      <Footer/>
+      <Footer />
     </>
   )
 }
