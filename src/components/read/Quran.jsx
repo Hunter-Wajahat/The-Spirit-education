@@ -26,8 +26,9 @@ const Quran = () => {
     }
     getLength()
   }, [chapter])
-
+  //the amound of pages
   const numbersOfPages = Array.from({ length: 1048 }, (_, index) => index + 1)
+  //the amount of chapter
   const numbersOfchapters = Array.from({ length: 30 }, (_, index) => index + 1)
 
 
