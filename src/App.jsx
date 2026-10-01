@@ -30,18 +30,27 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    const handleConnect = () => {
+      console.log("User connected:", socket.id)
+    }
+
+    socket.on("connect", handleConnect)
+
+    // The shared socket may already be connected before this effect runs.
+    if (socket.connected) handleConnect()
+
     async function getBlogData() {
       const url = `${import.meta.env.VITE_SERVER_URL}/api/public_blogs`;
       const response = await axios.get(url);
       dispatch(storeBlogs(response.data))
       console.log(response.data)
 
-      socket.on("connection", (socket)=>{
+      socket.on("connection", (socket) => {
         console.log("user connected", socket.id)
       })
     }
-    
-    
+
+
     getBlogData()
   }, [])
 
@@ -139,7 +148,7 @@ function App() {
       path: "/blog/:blogid",
       element: <>
         <SingleBlog />
-        <Navbar/>
+        <Navbar />
       </>
     },
     {
@@ -163,12 +172,14 @@ function App() {
         <Quran />
       </>
     },
-    // {
-    //   path: "/graph",
-    //   element: <>
-    //     <ChartAreaLinear/>
-    //   </>
-    // },
+    {
+      path: "/graph",
+      element: <>
+        <div className='w-175'>
+          <ChartAreaLinear />
+        </div>
+      </>
+    },
   ])
   return (
     <>
