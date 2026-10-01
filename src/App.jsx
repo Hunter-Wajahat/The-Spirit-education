@@ -22,7 +22,9 @@ import { storeBlogs } from './Redux/features/public blog data/publicBlogData'
 import SingleBlog from './components/individualBlog/individualBlog'
 import ReadQuran from './components/download/ReadQuran'
 import ReadQaida from './components/read/readQaida'
-import Quran from './components/read/Quran'
+import Quran from './components/read/Quran';
+import { socket } from '../socket'
+import ChartAreaLinear from './components/chart/AreaChart'
 
 function App() {
   const dispatch = useDispatch();
@@ -33,7 +35,13 @@ function App() {
       const response = await axios.get(url);
       dispatch(storeBlogs(response.data))
       console.log(response.data)
+
+      socket.on("connection", (socket)=>{
+        console.log("user connected", socket.id)
+      })
     }
+    
+    
     getBlogData()
   }, [])
 
@@ -155,6 +163,12 @@ function App() {
         <Quran />
       </>
     },
+    // {
+    //   path: "/graph",
+    //   element: <>
+    //     <ChartAreaLinear/>
+    //   </>
+    // },
   ])
   return (
     <>
