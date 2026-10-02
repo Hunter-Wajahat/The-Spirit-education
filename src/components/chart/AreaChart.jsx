@@ -15,7 +15,7 @@ import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-//  ChartConfig,
+  //  ChartConfig,
 } from "@/components/ui/chart"
 
 export const description = "A linear area chart"
@@ -34,11 +34,11 @@ const chartConfig = {
     label: "Desktop",
     color: "var(--chart-1)",
   },
-} 
+}
 
 export function ChartAreaLinear() {
   return (
-    <Card>
+    <Card className=" " style={{padding:10, marging:10}}>
       <CardHeader>
         <CardTitle>Area Chart - Linear</CardTitle>
         <CardDescription>
@@ -78,7 +78,7 @@ export function ChartAreaLinear() {
         </ChartContainer>
       </CardContent>
       <CardFooter>
-        <div className="flex w-175 items-start gap-2 text-sm">
+        <div className="flex w-full items-start gap-2 text-sm">
           <div className="grid gap-2">
             <div className="flex items-center gap-2 leading-none font-medium">
               Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
