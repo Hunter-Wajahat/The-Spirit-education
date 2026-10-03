@@ -22,7 +22,7 @@ export const description = "A linear area chart"
 
 const chartData = [
   { month: "January", desktop: 186 },
-  { month: "February", desktop: 305 },
+  { month: "February", desktop: 21 },
   { month: "March", desktop: 237 },
   { month: "April", desktop: 73 },
   { month: "May", desktop: 209 },
