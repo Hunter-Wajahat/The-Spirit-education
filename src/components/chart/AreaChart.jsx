@@ -1,8 +1,8 @@
-"use client"
+
 
 import { TrendingUp } from "lucide-react"
 import { Area, AreaChart, CartesianGrid, XAxis } from "recharts"
-
+import { useState, useEffect } from 'react'
 import {
   Card,
   CardContent,
@@ -17,28 +17,53 @@ import {
   ChartTooltipContent,
   //  ChartConfig,
 } from "@/components/ui/chart"
+import axios from 'axios'
 
 export const description = "A linear area chart"
 
-const chartData = [
-  { month: "January", desktop: 186 },
-  { month: "February", desktop: 21 },
-  { month: "March", desktop: 237 },
-  { month: "April", desktop: 73 },
-  { month: "May", desktop: 209 },
-  { month: "June", desktop: 214 },
-]
-
 const chartConfig = {
   desktop: {
-    label: "Desktop",
+    label: "Visitors",
     color: "var(--chart-1)",
   },
 }
 
 export function ChartAreaLinear() {
+  const [theChartData, setTheChartData] = useState([])
+  const [error, setError] = useState("")
+
+  useEffect(() => {
+    async function getChartData() {
+      try {
+        const url = `${import.meta.env.VITE_SERVER_URL}/api/visiting_stats`
+        const response = await axios.get(url, {
+          withCredentials: true,
+        })
+        const stats = response.data.preSixMonthStats
+
+        if (!Array.isArray(stats)) {
+          throw new Error("Expected preSixMonthStats to be an array.")
+        }
+
+        setTheChartData(
+          stats.map((stat) => ({
+            month: new Date(stat.date).toLocaleString("en-US", {
+              month: "long",
+              year: "numeric",
+              timeZone: "UTC",
+            }),
+            desktop: stat.vsitorCount,
+          })),
+        )
+      } catch (requestError) {
+        console.error("Failed to load visitor statistics:", requestError)
+        setError("Failed to load visitor statistics.")
+      }
+    }
+    getChartData()
+  }, [])
   return (
-    <Card className=" " style={{padding:10, marging:10}}>
+    <Card className=" " style={{ padding: 10, marging: 10 }}>
       <CardHeader>
         <CardTitle>Area Chart - Linear</CardTitle>
         <CardDescription>
@@ -46,10 +71,11 @@ export function ChartAreaLinear() {
         </CardDescription>
       </CardHeader>
       <CardContent>
+        {error && <p role="alert">{error}</p>}
         <ChartContainer config={chartConfig}>
           <AreaChart
             accessibilityLayer
-            data={chartData}
+            data={theChartData}
             margin={{
               left: 12,
               right: 12,
@@ -84,7 +110,9 @@ export function ChartAreaLinear() {
               Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
             </div>
             <div className="flex items-center gap-2 leading-none text-muted-foreground">
-              January - June 2024
+              {theChartData.length > 0
+                ? `${theChartData[0].month} - ${theChartData[theChartData.length - 1].month}`
+                : "Loading visitor statistics..."}
             </div>
           </div>
         </div>
