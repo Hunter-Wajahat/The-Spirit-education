@@ -2,8 +2,11 @@ import React, { useEffect, useState } from "react";
 import "./AdminDashboard.css";
 import axios from "axios";
 import Loader from "../loader/Loader";
+import { useParams } from "react-router-dom";
+import ChartAreaLinear from "#components/chart/AreaChart";
 
 const AdminDashboard = () => {
+  const {dash_preference} = useParams()
   const [authorData, setauthorData] = useState()
   const [loading, setloading] = useState()
   const [formLoading, setformLoading] = useState()
@@ -107,8 +110,8 @@ const AdminDashboard = () => {
           </a>
 
           <a href="#" className="adminNavItem">
-            <span>＋</span>
-            New Blog
+            <span className="shimmer-color-black">📊</span>
+            Stats
           </a>
 
           <a href="#" className="adminNavItem">
@@ -205,6 +208,8 @@ const AdminDashboard = () => {
 
 
         {/* Blog Editor */}
+        {
+          dash_preference == "editor"?
         <section className="blogEditor">
 
           <div className="sectionTitle">
@@ -380,6 +385,8 @@ const AdminDashboard = () => {
           </form>
 
         </section>
+      : <div style={{marginBottom:20, width:"80%"}}><ChartAreaLinear/></div>
+        }
 
 
         {/* Recent Blogs */}
