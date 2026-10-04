@@ -24,7 +24,7 @@ import ReadQuran from './components/download/ReadQuran'
 import ReadQaida from './components/read/readQaida'
 import Quran from './components/read/Quran';
 import { socket } from '../socket'
-import ChartAreaLinear from './components/chart/AreaChart'
+
 
 function App() {
   const dispatch = useDispatch();
@@ -132,7 +132,7 @@ function App() {
       </>
     },
     {
-      path: "/my_dashboard",
+      path: "/my_dashboard/:dash_preference",
       element: <>
         {/* <Navbar /> */}
         <AdminDashboard />
@@ -170,14 +170,6 @@ function App() {
       element: <>
         <Navbar />
         <Quran />
-      </>
-    },
-    {
-      path: "/graph",
-      element: <>
-        <div className='w-175'>
-          <ChartAreaLinear />
-        </div>
       </>
     },
   ])
